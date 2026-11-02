@@ -21,7 +21,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
 
     public ComponentProviderViewModel()
     {
-        if (IsInDesignMode)
+        if (DesignModeHelper.IsInDesignMode)
         {
             Logger = NullLogger<ComponentProviderViewModel>.Instance;
             networkShellService = new NetworkShellService();
