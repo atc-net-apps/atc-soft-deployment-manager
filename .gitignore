@@ -426,3 +426,10 @@ FodyWeavers.xsd
 
 # Official VS Code C# Dev Kit Extension exclusion
 #*.lscache
+
+# Test results
+TestResults/
+
+# Local working notes: assessments and issue drafts
+plans/*
+issues/*

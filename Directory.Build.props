@@ -14,6 +14,19 @@
     <DefaultLanguage>en-US</DefaultLanguage>
   </PropertyGroup>
 
+  <PropertyGroup Label="Versioning">
+    <!-- The 'x-release-please-' comments are used to inform the release-please action that it should update the semver version here -->
+    <!-- x-release-please-start-version -->
+    <Version>1.0.26</Version>
+    <!-- x-release-please-end -->
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+    <!-- An app repo: nothing here is published as a NuGet package -->
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
   <PropertyGroup Label="Compile settings">
     <Nullable>enable</Nullable>
     <LangVersion>14.0</LangVersion>
@@ -35,6 +48,12 @@
   <!-- Treat warnings as errors are always on when building in release -->
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <!-- Speed up Debug builds by disabling analyzers (source generators still run) -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <RunAnalyzers>false</RunAnalyzers>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
   </PropertyGroup>
 
   <!-- Shared code analyzers used for all projects in the solution -->
