@@ -55,7 +55,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
 
         ApplicationOptions = new ApplicationOptionsViewModel(new ApplicationOptions());
 
-        if (!IsInDesignMode)
+        if (!DesignModeHelper.IsInDesignMode)
         {
             return;
         }
