@@ -4,10 +4,6 @@
       "StorageConnectionString": "",
       "BlobContainerName": ""
   },
-  "DefaultCredentials": {
-      "Username": "JohnDoe",
-      "Password": "Ymn8p2OmnsBZDu5K"
-  },
   "Applications": [
       {
           "Name": "HelloWorldWpf",
@@ -81,11 +77,10 @@
           "DependentServices": [
               "HelloWorldWindowsNTServiceTopShelf"
           ],
-          "InternetInformationServiceSettings": {
+          "ApplicationSettings": {
               "HttpPort": 9020,
               "HttpsPort": 9021
-          },
-          "ApplicationSettings": {}
+          }
       }
   ]
 }

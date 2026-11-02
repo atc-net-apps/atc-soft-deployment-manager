@@ -5,7 +5,7 @@ namespace AtcSoft.Deployment.Manager.Windows.Tests;
 [SuppressMessage("Microsoft.Interoperability", "CA1416:ValidatePlatformCompatibility", Justification = "OK.")]
 public class WindowsFirewallServiceTests
 {
-    [Fact]
+    [Fact(Skip = MachineTests.SkipReason, SkipType = typeof(MachineTests), SkipUnless = nameof(MachineTests.IsEnabled))]
     public void AddRemoveInboundRuleForTcpFlow()
     {
         var service = new WindowsFirewallService();
@@ -44,7 +44,7 @@ public class WindowsFirewallServiceTests
         Assert.False(doesRuleExist3);
     }
 
-    [Fact]
+    [Fact(Skip = MachineTests.SkipReason, SkipType = typeof(MachineTests), SkipUnless = nameof(MachineTests.IsEnabled))]
     public void AddRemoveInboundRuleForUdpFlow()
     {
         var service = new WindowsFirewallService();

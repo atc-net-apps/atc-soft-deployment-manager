@@ -5,7 +5,7 @@ namespace AtcSoft.Deployment.Manager.Windows.Tests;
 [SuppressMessage("Microsoft.Interoperability", "CA1416:ValidatePlatformCompatibility", Justification = "OK.")]
 public class WindowsApplicationInstallerServiceTests
 {
-    [Fact]
+    [Fact(Skip = MachineTests.SkipReason, SkipType = typeof(MachineTests), SkipUnless = nameof(MachineTests.IsEnabled))]
     public void StopAndStartApplicationFlow_ApplicationFile()
     {
         var iaInstallerService = new InstalledAppsInstallerService();

@@ -108,12 +108,12 @@
           "Endpoints": [
               {
                   "Name": "AssemblyInfo",
-                  "ComponentEndpointType": "ReportingAssemblyInfo",
+                  "EndpointType": "ReportingAssemblyInfo",
                   "Endpoint": "[[WebProtocol]]://[[HostName]]:[[HttpsPort]]/management/assembly-informations"
               },
               {
                   "Name": "HealthCheck",
-                  "ComponentEndpointType": "ReportingHealthCheck",
+                  "EndpointType": "ReportingHealthCheck",
                   "Endpoint": "[[WebProtocol]]://[[HostName]]:[[HttpsPort]]/health"
               }
           ]
@@ -178,12 +178,12 @@
           "Endpoints": [
               {
                   "Name": "AssemblyInfo",
-                  "ComponentEndpointType": "ReportingAssemblyInfo",
+                  "EndpointType": "ReportingAssemblyInfo",
                   "Endpoint": "[[WebProtocol]]://[[HostName]]:[[HttpsPort]]/management/assembly-informations"
               },
               {
                   "Name": "HealthCheck",
-                  "ComponentEndpointType": "ReportingHealthCheck",
+                  "EndpointType": "ReportingHealthCheck",
                   "Endpoint": "[[WebProtocol]]://[[HostName]]:[[HttpsPort]]/health"
               }
           ]
@@ -264,12 +264,12 @@
           "Endpoints": [
               {
                   "Name": "AssemblyInfo",
-                  "ComponentEndpointType": "ReportingAssemblyInfo",
+                  "EndpointType": "ReportingAssemblyInfo",
                   "Endpoint": "[[WebProtocol]]://[[HostName]]:[[HttpsPort]]/management/assembly-informations"
               },
               {
                   "Name": "HealthCheck",
-                  "ComponentEndpointType": "ReportingHealthCheck",
+                  "EndpointType": "ReportingHealthCheck",
                   "Endpoint": "[[WebProtocol]]://[[HostName]]:[[HttpsPort]]/health"
               }
           ]
@@ -277,7 +277,7 @@
       {
           "Name": "MyCompany.SampleProject1.Backend3.Service",
           "ComponentType": "WindowsService",
-          "HostingFramework": "DonNetFramework48",
+          "HostingFramework": "DotNetFramework48",
           "InstallationFile": "MyCompany.SampleProject1.Backend3.Service.zip",
           "InstallationPath": "C:\\MyCompany\\MyCompany.SampleProject1.Backend3.Service",
           "DependentComponents": [],
@@ -380,12 +380,12 @@
           "Endpoints": [
               {
                   "Name": "AssemblyInfo",
-                  "ComponentEndpointType": "ReportingAssemblyInfo",
+                  "EndpointType": "ReportingAssemblyInfo",
                   "Endpoint": "[[WebProtocol]]://[[HostName]]:[[HttpPort]]/management/assembly-informations"
               },
               {
                   "Name": "HealthCheck",
-                  "ComponentEndpointType": "ReportingHealthCheck",
+                  "EndpointType": "ReportingHealthCheck",
                   "Endpoint": "[[WebProtocol]]://[[HostName]]:[[HttpPort]]/health"
               }
           ]

@@ -25,13 +25,5 @@ public static class WpfApp
     public static DirectoryInfo TempDirectory { get; set; } = AppDataPaths.DefaultTempDirectory;
 
     public static JsonSerializerOptions JsonSerializerOptions
-    {
-        get
-        {
-            var jsonSerializerOptions = JsonSerializerOptionsFactory.Create();
-            jsonSerializerOptions.PropertyNamingPolicy = null;
-            jsonSerializerOptions.Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
-            return jsonSerializerOptions;
-        }
-    }
+        => ProjectFileJson.SerializerOptions;
 }
