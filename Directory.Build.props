@@ -3,7 +3,7 @@
 
   <PropertyGroup Label="Metadata configuration">
     <OrganizationName>atc-net-apps</OrganizationName>
-    <RepositoryName>atc-soft-installer</RepositoryName>
+    <RepositoryName>atc-soft-deployment-manager</RepositoryName>
   </PropertyGroup>
 
   <!-- Solution wide properties -->
