@@ -7,7 +7,7 @@ AtcSoft Deployment Manager 2.0 is the next version of **Atc.Installer** (`atc-ne
 ## In short
 
 1. Install the .NET 10 Desktop Runtime.
-2. Install `AtcSoft.Deployment.Manager.Installer.msi` from the [latest release](https://github.com/atc-net-apps/atc-soft-deployment-manager/releases/latest). It installs **next to** Atc.Installer 1.x; it doesn't replace it.
+2. Install `AtcSoft.Deployment.Manager.Installer.msi` from the [latest release](https://github.com/atc-net-apps/atc-soft-deployment-manager/releases/latest). It installs **next to** Atc.Installer 1.x; it doesn't replace it. Atc.Installer 1.x doesn't tell you about 2.0: its update check only looks at the old repo.
 3. Copy each project folder from 1.x to the new data folder and check its files (see below).
 4. Open each project in 2.0 and compare it with 1.x.
 5. When every project works in 2.0, uninstall Atc.Installer 1.x.
