@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+<ItemGroup>
+    <PackageReference Include="Atc" Version="2.0.478" />
+    <PackageReference Include="Azure.Identity" Version="1.11.4" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.20.0" />
+    <PackageReference Include="Microsoft.Web.Administration" Version="11.1.0" />
+    <PackageReference Include="NEST" Version="7.17.5" />
+    <PackageReference Include="Npgsql" Version="8.0.3" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="InternetInformationServer\Resources\default-nodejs-urlrewrite-webconfig" />
+    <EmbeddedResource Include="InternetInformationServer\Resources\default-nodejs-urlrewrite-webconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AtcSoft.Deployment.Manager\AtcSoft.Deployment.Manager.csproj" />
+  </ItemGroup>
+
+</Project>
