@@ -2,9 +2,6 @@
 // ReSharper disable AsyncVoidMethod
 namespace AtcSoft.Deployment.Manager.Wpf.App;
 
-/// <summary>
-/// Interaction logic for App.
-/// </summary>
 public partial class App
 {
     private readonly IHost host;
@@ -52,8 +49,7 @@ public partial class App
 
     public IServiceProvider ServiceProvider { get; }
 
-    private void ConfigureServices(
-        IServiceCollection services)
+    private void ConfigureServices(IServiceCollection services)
     {
         services
             .AddOptions<ApplicationOptions>()

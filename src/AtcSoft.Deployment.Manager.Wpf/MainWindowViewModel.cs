@@ -161,6 +161,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
     public string? NewVersionIsAvailable
     {
         get => newVersionIsAvailable;
+
         set
         {
             newVersionIsAvailable = value;
@@ -171,6 +172,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
     public ApplicationOptionsViewModel ApplicationOptions
     {
         get => applicationOptions;
+
         set
         {
             applicationOptions = value;
@@ -181,6 +183,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
     public AzureOptionsViewModel? AzureOptions
     {
         get => azureOptions;
+
         set
         {
             azureOptions = value;
@@ -195,6 +198,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
     public BitmapImage? Icon
     {
         get => icon;
+
         set
         {
             icon = value;
@@ -205,6 +209,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
     public string? ProjectName
     {
         get => projectName;
+
         set
         {
             projectName = value;
@@ -215,6 +220,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
     public bool CompactMode
     {
         get => compactMode;
+
         set
         {
             compactMode = value;
@@ -234,6 +240,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
     public ComponentProviderViewModel? SelectedComponentProvider
     {
         get => selectedComponentProvider;
+
         set
         {
             selectedComponentProvider = value;
@@ -244,6 +251,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
     public string? ComponentProviderFilter
     {
         get => componentProviderFilter;
+
         set
         {
             componentProviderFilter = value;
@@ -294,8 +302,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
         lastUserActionTimestamp = DateTime.Now;
     }
 
-    private void HandleToastNotificationMessage(
-        ToastNotificationMessage obj)
+    private void HandleToastNotificationMessage(ToastNotificationMessage obj)
     {
         notificationManager.Show(
             useDesktop: false,
@@ -345,7 +352,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
 
     private async Task CheckForUpdates()
     {
-        if (!NetworkInformationHelper.HasConnection())
+        if (!await NetworkInformationHelper.HasConnectionAsync(CancellationToken.None).ConfigureAwait(true))
         {
             return;
         }

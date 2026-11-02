@@ -35,6 +35,7 @@ public class ApplicationSettingsViewModel : ViewModelBase
     public bool EnableEditingMode
     {
         get => enableEditingMode;
+
         set
         {
             if (enableEditingMode == value)
@@ -114,7 +115,9 @@ public class ApplicationSettingsViewModel : ViewModelBase
         Items.SuppressOnChangedNotification = false;
     }
 
-    public bool TryGetString(string key, out string value)
+    public bool TryGetString(
+        string key,
+        out string value)
     {
         var item = Items.FirstOrDefault(x => x.Key == key);
         if (item?.Value is null)
@@ -127,7 +130,9 @@ public class ApplicationSettingsViewModel : ViewModelBase
         return true;
     }
 
-    public bool TryGetBoolean(string key, out bool value)
+    public bool TryGetBoolean(
+        string key,
+        out bool value)
     {
         var item = Items.FirstOrDefault(x => x.Key == key);
         if (item?.Value is null)
@@ -148,7 +153,9 @@ public class ApplicationSettingsViewModel : ViewModelBase
         return false;
     }
 
-    public bool TryGetUshort(string key, out ushort value)
+    public bool TryGetUshort(
+        string key,
+        out ushort value)
     {
         var item = Items.FirstOrDefault(x => x.Key == key);
         if (item?.Value is null)
@@ -266,8 +273,7 @@ public class ApplicationSettingsViewModel : ViewModelBase
         IsDirty = true;
     }
 
-    private void EditCommandHandler(
-        KeyValueTemplateItemViewModel item)
+    private void EditCommandHandler(KeyValueTemplateItemViewModel item)
     {
         var updateItem = Items.First(x => x.Key.Equals(item.Key, StringComparison.Ordinal));
 
@@ -286,8 +292,7 @@ public class ApplicationSettingsViewModel : ViewModelBase
         HandleEditDialogResult(dialogBox, updateItem);
     }
 
-    private bool CanDeleteCommandHandler(
-        KeyValueTemplateItemViewModel item)
+    private bool CanDeleteCommandHandler(KeyValueTemplateItemViewModel item)
     {
         var templateKey = $"[[{item.Key}]]";
 
@@ -320,8 +325,7 @@ public class ApplicationSettingsViewModel : ViewModelBase
         return true;
     }
 
-    private void DeleteCommandHandler(
-        KeyValueTemplateItemViewModel item)
+    private void DeleteCommandHandler(KeyValueTemplateItemViewModel item)
     {
         var dialogBox = new QuestionDialogBox(
             Application.Current.MainWindow!,

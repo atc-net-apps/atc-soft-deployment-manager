@@ -27,6 +27,7 @@ public class FolderPermissionsViewModel : ViewModelBase
     public bool EnableEditingMode
     {
         get => enableEditingMode;
+
         set
         {
             if (enableEditingMode == value)
@@ -77,7 +78,10 @@ public class FolderPermissionsViewModel : ViewModelBase
 
     private void NewCommandHandler()
     {
-        ArgumentNullException.ThrowIfNull(refComponentProvider);
+        if (refComponentProvider is null)
+        {
+            throw new InvalidOperationException("The view model is not populated.");
+        }
 
         var dialogBox = InputFormDialogBoxFactory.CreateForNewFolderPermissions(refComponentProvider);
 
@@ -143,8 +147,7 @@ public class FolderPermissionsViewModel : ViewModelBase
         IsDirty = true;
     }
 
-    private void DeleteCommandHandler(
-        FolderPermissionViewModel item)
+    private void DeleteCommandHandler(FolderPermissionViewModel item)
     {
         var dialogBox = new QuestionDialogBox(
             Application.Current.MainWindow!,

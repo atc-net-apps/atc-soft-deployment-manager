@@ -48,7 +48,8 @@ public class ConfigurationKeyToUnitTypeValueConverter : IValueConverter
         => throw new NotImplementedException();
 
     public static bool TryParse(
-        string value, out string unitType)
+        string value,
+        out string unitType)
     {
         ArgumentException.ThrowIfNullOrEmpty(value);
 
@@ -67,8 +68,7 @@ public class ConfigurationKeyToUnitTypeValueConverter : IValueConverter
         return false;
     }
 
-    public static string GetRegexPatternFromUnitType(
-        string unitType)
+    public static string GetRegexPatternFromUnitType(string unitType)
     {
         ArgumentException.ThrowIfNullOrEmpty(unitType);
 

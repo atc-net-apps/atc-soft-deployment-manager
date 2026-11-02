@@ -11,6 +11,7 @@ public class PostgreSqlConnectionViewModel : ViewModelBase
     public string? HostName
     {
         get => hostName;
+
         set
         {
             hostName = value;
@@ -21,6 +22,7 @@ public class PostgreSqlConnectionViewModel : ViewModelBase
     public ushort? HostPort
     {
         get => hostPort;
+
         set
         {
             hostPort = value;
@@ -31,6 +33,7 @@ public class PostgreSqlConnectionViewModel : ViewModelBase
     public string? Database
     {
         get => database;
+
         set
         {
             database = value;
@@ -41,6 +44,7 @@ public class PostgreSqlConnectionViewModel : ViewModelBase
     public string? Username
     {
         get => username;
+
         set
         {
             username = value;
@@ -51,6 +55,7 @@ public class PostgreSqlConnectionViewModel : ViewModelBase
     public string? Password
     {
         get => password;
+
         set
         {
             password = value;

@@ -160,7 +160,7 @@ public static class LabelControlsFactory
         {
             var value = updateItem.Value.ToString()!;
             if (string.IsNullOrEmpty(valueLabelRegexPattern) &&
-                Regex.IsMatch(value, RegexPatternConstants.Boolean.Strict, RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture))
+                Regex.IsMatch(value, RegexPatternConstants.Boolean.Strict, RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture, TimeSpan.FromSeconds(1)))
             {
                 labelTextBoxValue.ValidationText = "True/False";
                 labelTextBoxValue.RegexPattern = RegexPatternConstants.Boolean.Optional;

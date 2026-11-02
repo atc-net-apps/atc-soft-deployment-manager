@@ -41,6 +41,7 @@ public class ConfigurationSettingsFilesViewModel : ViewModelBase
     public bool EnableEditingMode
     {
         get => enableEditingMode;
+
         set
         {
             if (enableEditingMode == value)
@@ -201,8 +202,7 @@ public class ConfigurationSettingsFilesViewModel : ViewModelBase
         IsDirty = true;
     }
 
-    private void EditJsonCommandHandler(
-        KeyValueTemplateItemViewModel item)
+    private void EditJsonCommandHandler(KeyValueTemplateItemViewModel item)
     {
         var updateItem = JsonItems[0].Settings.First(x => x.Key.Equals(item.Key, StringComparison.Ordinal));
 
@@ -221,8 +221,7 @@ public class ConfigurationSettingsFilesViewModel : ViewModelBase
         HandleEditDialogResult(dialogBox, updateItem);
     }
 
-    private void DeleteJsonCommandHandler(
-        KeyValueTemplateItemViewModel item)
+    private void DeleteJsonCommandHandler(KeyValueTemplateItemViewModel item)
     {
         var dialogBox = new QuestionDialogBox(
             Application.Current.MainWindow!,
@@ -351,8 +350,7 @@ public class ConfigurationSettingsFilesViewModel : ViewModelBase
         IsDirty = true;
     }
 
-    private void EditXmlCommandHandler(
-        XmlElementViewModel item)
+    private void EditXmlCommandHandler(XmlElementViewModel item)
     {
         KeyValueTemplateItemViewModel? updateItem = null;
         foreach (var xmlElement in XmlItems[0].Settings)
@@ -386,8 +384,7 @@ public class ConfigurationSettingsFilesViewModel : ViewModelBase
         HandleEditDialogResult(dialogBox, updateItem);
     }
 
-    private void DeleteXmlCommandHandler(
-        XmlElementViewModel item)
+    private void DeleteXmlCommandHandler(XmlElementViewModel item)
     {
         var itemKey = item.Attributes.First(x => x.Key == "key").GetValueAsString();
 

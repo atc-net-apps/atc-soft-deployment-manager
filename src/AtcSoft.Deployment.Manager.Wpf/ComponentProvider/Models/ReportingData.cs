@@ -2,8 +2,7 @@ namespace AtcSoft.Deployment.Manager.Wpf.ComponentProvider.Models;
 
 public class ReportingData
 {
-    public ReportingData(
-        string name)
+    public ReportingData(string name)
     {
         Name = name;
         Files = new List<ReportingFile>();

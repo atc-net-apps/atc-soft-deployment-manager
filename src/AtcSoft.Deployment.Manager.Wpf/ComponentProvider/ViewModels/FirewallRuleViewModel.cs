@@ -11,8 +11,7 @@ public class FirewallRuleViewModel : ViewModelBase
     {
     }
 
-    public FirewallRuleViewModel(
-        FirewallRuleOption firewallRule)
+    public FirewallRuleViewModel(FirewallRuleOption firewallRule)
     {
         ArgumentNullException.ThrowIfNull(firewallRule);
 
@@ -25,6 +24,7 @@ public class FirewallRuleViewModel : ViewModelBase
     public string Name
     {
         get => name;
+
         set
         {
             name = value;
@@ -35,6 +35,7 @@ public class FirewallRuleViewModel : ViewModelBase
     public int Port
     {
         get => port;
+
         set
         {
             port = value;
@@ -45,6 +46,7 @@ public class FirewallRuleViewModel : ViewModelBase
     public FirewallDirectionType Direction
     {
         get => direction;
+
         set
         {
             direction = value;
@@ -55,6 +57,7 @@ public class FirewallRuleViewModel : ViewModelBase
     public FirewallProtocolType Protocol
     {
         get => protocol;
+
         set
         {
             protocol = value;

@@ -11,8 +11,7 @@ public class FolderPermissionViewModel : ViewModelBase
     {
     }
 
-    public FolderPermissionViewModel(
-        FolderPermissionOption folderPermission)
+    public FolderPermissionViewModel(FolderPermissionOption folderPermission)
     {
         ArgumentNullException.ThrowIfNull(folderPermission);
 
@@ -26,6 +25,7 @@ public class FolderPermissionViewModel : ViewModelBase
     public string User
     {
         get => user;
+
         set
         {
             user = value;
@@ -36,6 +36,7 @@ public class FolderPermissionViewModel : ViewModelBase
     public FileSystemRights FileSystemRights
     {
         get => fileSystemRights;
+
         set
         {
             fileSystemRights = value;
@@ -46,6 +47,7 @@ public class FolderPermissionViewModel : ViewModelBase
     public string Folder
     {
         get => folder;
+
         set
         {
             folder = value;
@@ -56,6 +58,7 @@ public class FolderPermissionViewModel : ViewModelBase
     public DirectoryInfo? Directory
     {
         get => directory;
+
         set
         {
             directory = value;

@@ -26,19 +26,16 @@ public interface IInternetInformationServerInstallerService : IInstallerService
 
     bool IsComponentInstalledUrlRewriteModule2();
 
-    string? ResolvedVirtualRootFolder(
-        string folder);
+    string? ResolvedVirtualRootFolder(string folder);
 
     Task<(bool IsSucceeded, string? ErrorMessage)> UnlockConfigSectionSystemWebServerModules();
 
     Task<(bool IsSucceeded, string? ErrorMessage)> EnsureSettingsForComponentUrlRewriteModule2(
         DirectoryInfo installationPath);
 
-    ComponentRunningState GetApplicationPoolState(
-        string applicationPoolName);
+    ComponentRunningState GetApplicationPoolState(string applicationPoolName);
 
-    ComponentRunningState GetWebsiteState(
-        string websiteName);
+    ComponentRunningState GetWebsiteState(string websiteName);
 
     Task<bool> CreateApplicationPool(
         string applicationPoolName,
@@ -112,13 +109,11 @@ public interface IInternetInformationServerInstallerService : IInstallerService
 
     IList<X509Certificate2> GetX509Certificates();
 
-    X509Certificate2? GetWebsiteX509Certificate(
-        string websiteName);
+    X509Certificate2? GetWebsiteX509Certificate(string websiteName);
 
     bool AssignX509CertificateToWebsite(
         string websiteName,
         X509Certificate2 certificate);
 
-    bool UnAssignX509CertificateOnWebsite(
-        string websiteName);
+    bool UnAssignX509CertificateOnWebsite(string websiteName);
 }

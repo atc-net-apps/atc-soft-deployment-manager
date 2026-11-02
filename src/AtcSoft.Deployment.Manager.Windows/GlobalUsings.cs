@@ -1,7 +1,5 @@
-global using System.ComponentModel;
 global using System.Diagnostics;
 global using System.Diagnostics.CodeAnalysis;
-global using System.Globalization;
 global using System.Runtime.CompilerServices;
 global using System.Runtime.InteropServices;
 global using System.Runtime.Versioning;
@@ -11,7 +9,6 @@ global using System.Security.Cryptography.X509Certificates;
 global using System.Security.Principal;
 global using System.ServiceProcess;
 global using System.Text;
-global using System.Text.Json;
 global using System.Xml.Linq;
 
 global using Atc;

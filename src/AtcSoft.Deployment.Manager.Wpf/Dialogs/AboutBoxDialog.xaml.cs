@@ -1,8 +1,5 @@
 namespace AtcSoft.Deployment.Manager.Wpf.Dialogs;
 
-/// <summary>
-/// Interaction logic for AboutBoxDialog.
-/// </summary>
 public partial class AboutBoxDialog
 {
     public AboutBoxDialog()

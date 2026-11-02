@@ -38,12 +38,10 @@ public class WindowsFirewallService : IWindowsFirewallService
         Any = 256, // NET_FW_IP_PROTOCOL_ANY
     }
 
-    public bool DoesRuleExist(
-        string ruleName)
+    public bool DoesRuleExist(string ruleName)
         => FindRule(ruleName) is not null;
 
-    public bool IsRuleEnabled(
-        string ruleName)
+    public bool IsRuleEnabled(string ruleName)
     {
         var rule = FindRule(ruleName);
         return rule is not null && (bool)rule.Enabled;
@@ -85,16 +83,13 @@ public class WindowsFirewallService : IWindowsFirewallService
         int port)
         => AddRule(ruleName, description, port, FirewallAction.Allow, FirewallDirection.Out, FirewallProtocol.Any);
 
-    public (bool IsSucceeded, string? ErrorMessage) EnableRule(
-        string ruleName)
+    public (bool IsSucceeded, string? ErrorMessage) EnableRule(string ruleName)
         => SetRuleEnabled(ruleName, enabled: true);
 
-    public (bool IsSucceeded, string? ErrorMessage) DisableRule(
-        string ruleName)
+    public (bool IsSucceeded, string? ErrorMessage) DisableRule(string ruleName)
         => SetRuleEnabled(ruleName, enabled: false);
 
-    public (bool IsSucceeded, string? ErrorMessage) RemoveRule(
-        string ruleName)
+    public (bool IsSucceeded, string? ErrorMessage) RemoveRule(string ruleName)
     {
         var policy = GetPolicy();
 
@@ -122,8 +117,7 @@ public class WindowsFirewallService : IWindowsFirewallService
     private dynamic GetPolicy()
         => firewallPolicy ?? throw new COMException("FirewallPolicy is not initialized");
 
-    private dynamic? FindRule(
-        string ruleName)
+    private dynamic? FindRule(string ruleName)
     {
         foreach (var rule in GetPolicy().Rules)
         {

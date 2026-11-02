@@ -27,7 +27,7 @@ public class CheckForUpdatesBoxDialogViewModel : ViewModelBase, ICheckForUpdates
             {
                 while (!cancellationTokenSource.Token.IsCancellationRequested)
                 {
-                    if (NetworkInformationHelper.HasConnection())
+                    if (await NetworkInformationHelper.HasConnectionAsync(cancellationTokenSource.Token).ConfigureAwait(false))
                     {
                         TaskHelper.RunSync(RetrieveLatestFromGitHubHandler);
                     }
@@ -54,6 +54,7 @@ public class CheckForUpdatesBoxDialogViewModel : ViewModelBase, ICheckForUpdates
     public string LatestVersion
     {
         get => latestVersion;
+
         set
         {
             latestVersion = value;
@@ -64,6 +65,7 @@ public class CheckForUpdatesBoxDialogViewModel : ViewModelBase, ICheckForUpdates
     public string LatestLink
     {
         get => latestLink;
+
         set
         {
             latestLink = value;
@@ -81,6 +83,7 @@ public class CheckForUpdatesBoxDialogViewModel : ViewModelBase, ICheckForUpdates
     public bool HasNewVersion
     {
         get => hasNewVersion;
+
         set
         {
             hasNewVersion = value;
@@ -133,8 +136,7 @@ public class CheckForUpdatesBoxDialogViewModel : ViewModelBase, ICheckForUpdates
         }
     }
 
-    private static void CancelCommandHandler(
-        NiceDialogBox dialogBox)
+    private static void CancelCommandHandler(NiceDialogBox dialogBox)
     {
         dialogBox.Close();
     }

@@ -32,8 +32,7 @@ public class InstalledAppsInstallerService : IInstalledAppsInstallerService
     public Task<bool> IsNodeJs18()
         => IsNodeJs(18);
 
-    public bool IsAppInstalledByDisplayName(
-        string appDisplayName)
+    public bool IsAppInstalledByDisplayName(string appDisplayName)
     {
         ArgumentException.ThrowIfNullOrEmpty(appDisplayName);
 
@@ -47,7 +46,7 @@ public class InstalledAppsInstallerService : IInstalledAppsInstallerService
 
             foreach (var subKeyName in registryKey.GetSubKeyNames())
             {
-                var registrySubKey = registryKey.OpenSubKey(subKeyName);
+                using var registrySubKey = registryKey.OpenSubKey(subKeyName);
                 var displayName = (string?)registrySubKey?.GetValue("DisplayName");
                 if (displayName is null)
                 {
@@ -68,8 +67,7 @@ public class InstalledAppsInstallerService : IInstalledAppsInstallerService
         }
     }
 
-    public Version? GetAppInstalledVersionByDisplayName(
-        string appDisplayName)
+    public Version? GetAppInstalledVersionByDisplayName(string appDisplayName)
     {
         ArgumentException.ThrowIfNullOrEmpty(appDisplayName);
 
@@ -88,7 +86,7 @@ public class InstalledAppsInstallerService : IInstalledAppsInstallerService
 
             foreach (var subKeyName in registryKey.GetSubKeyNames())
             {
-                var registrySubKey = registryKey.OpenSubKey(subKeyName);
+                using var registrySubKey = registryKey.OpenSubKey(subKeyName);
                 if (registrySubKey is null)
                 {
                     continue;
@@ -124,13 +122,12 @@ public class InstalledAppsInstallerService : IInstalledAppsInstallerService
         }
     }
 
-    private static bool IsMicrosoftDotNetFramework(
-        int versionValue)
+    private static bool IsMicrosoftDotNetFramework(int versionValue)
     {
         try
         {
             using var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32);
-            var subKey = baseKey.OpenSubKey(DotNetFrameworkRegistryPath);
+            using var subKey = baseKey.OpenSubKey(DotNetFrameworkRegistryPath);
             return subKey?.GetValue("Release") is not null &&
                    (int)(subKey.GetValue("Release") ?? 0) >= versionValue;
         }
@@ -140,8 +137,7 @@ public class InstalledAppsInstallerService : IInstalledAppsInstallerService
         }
     }
 
-    private static bool IsMicrosoftDotNet(
-        ushort mainVersion)
+    private static bool IsMicrosoftDotNet(ushort mainVersion)
     {
         try
         {
@@ -163,8 +159,7 @@ public class InstalledAppsInstallerService : IInstalledAppsInstallerService
         }
     }
 
-    private static bool IsJavaRuntime(
-        ushort mainVersion)
+    private static bool IsJavaRuntime(ushort mainVersion)
     {
         try
         {
@@ -192,8 +187,7 @@ public class InstalledAppsInstallerService : IInstalledAppsInstallerService
 
     [SuppressMessage("Minor Code Smell", "S1075:URIs should not be hardcoded", Justification = "OK.")]
     [SuppressMessage("Performance", "CA1861:Avoid constant arrays as arguments", Justification = "OK.")]
-    private async Task<bool> IsNodeJs(
-        ushort mainVersion)
+    private async Task<bool> IsNodeJs(ushort mainVersion)
     {
         var (isSuccessful, output) = await ProcessHelper
             .ExecutePrompt(

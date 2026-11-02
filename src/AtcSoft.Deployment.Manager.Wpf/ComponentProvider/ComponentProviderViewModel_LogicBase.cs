@@ -13,18 +13,15 @@ namespace AtcSoft.Deployment.Manager.Wpf.ComponentProvider;
 [SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1502:Element should not be on a single line", Justification = "OK - ByDesign.")]
 public partial class ComponentProviderViewModel
 {
-    public void SetFilterTextForMenu(
-        string filterText)
+    public void SetFilterTextForMenu(string filterText)
     {
         FilterTextForMenu = filterText;
     }
 
-    public bool IsKeyInDefaultApplicationSettings(
-        string key)
+    public bool IsKeyInDefaultApplicationSettings(string key)
         => DefaultApplicationSettings.Items.Any(item => item.Key.Equals(key, StringComparison.Ordinal));
 
-    public bool IsKeyInApplicationSettings(
-        string key)
+    public bool IsKeyInApplicationSettings(string key)
         => ApplicationSettings.Items.Any(item => item.Key.Equals(key, StringComparison.Ordinal));
 
     public bool TryGetStringFromApplicationSettings(
@@ -185,8 +182,7 @@ public partial class ComponentProviderViewModel
         }
     }
 
-    public void PrepareInstallationFiles(
-        bool unpackIfExist)
+    public void PrepareInstallationFiles(bool unpackIfExist)
     {
         if (InstallationFile is null ||
             !InstallationFile.EndsWith(".zip", StringComparison.OrdinalIgnoreCase))
@@ -227,8 +223,7 @@ public partial class ComponentProviderViewModel
         }
     }
 
-    private static List<string> GetFileNameFromZip(
-        string installationFilePath)
+    private static List<string> GetFileNameFromZip(string installationFilePath)
     {
         using var archive = ZipFile.OpenRead(installationFilePath);
         return archive.Entries
@@ -327,11 +322,8 @@ public partial class ComponentProviderViewModel
         DynamicJson dynamicJson)
     { }
 
-    public virtual string ResolvedVirtualRootFolder(
-        string folder)
-    {
-        return string.Empty;
-    }
+    public virtual string ResolvedVirtualRootFolder(string folder)
+        => string.Empty;
 
     public virtual void UpdateConfigurationXmlDocument(
         string fileName,
@@ -472,8 +464,7 @@ public partial class ComponentProviderViewModel
         AddLogItem(LogLevel.Information, "Files is copied");
     }
 
-    private static void DeleteDevelopmentConfigurationFiles(
-        DirectoryInfo path)
+    private static void DeleteDevelopmentConfigurationFiles(DirectoryInfo path)
     {
         if (path is null)
         {
@@ -931,8 +922,7 @@ public partial class ComponentProviderViewModel
         }
     }
 
-    private void ResolveInstalledMainFile(
-        ApplicationOption applicationOption)
+    private void ResolveInstalledMainFile(ApplicationOption applicationOption)
     {
         if (InstallationFolderPath is null)
         {
@@ -1247,10 +1237,7 @@ public partial class ComponentProviderViewModel
     private string? GetInstallationMainFilePath()
     {
         var installationMainPath = AdjustInstalledMainFilePathIfNeededAndGetInstallationMainPath();
-        var installationMainFile = installationMainPath.EndsWith(".dll", StringComparison.OrdinalIgnoreCase) ||
-                                   installationMainPath.EndsWith(".wasm", StringComparison.OrdinalIgnoreCase)
-            ? installationMainPath
-            : Path.Combine(installationMainPath, $"{Name}.exe");
+        var installationMainFile = installationMainPath.EndsWith(".dll", StringComparison.OrdinalIgnoreCase) || installationMainPath.EndsWith(".wasm", StringComparison.OrdinalIgnoreCase) ? installationMainPath : Path.Combine(installationMainPath, $"{Name}.exe");
 
         if (!File.Exists(installationMainFile))
         {

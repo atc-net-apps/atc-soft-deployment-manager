@@ -39,8 +39,7 @@ public class ComponentProviderVersionCompareVisibilityVisibleValueConverter : IV
         object? parameter,
         CultureInfo culture) => null;
 
-    private static Visibility AnalyzeVersion(
-        ComponentProviderViewModel vm)
+    private static Visibility AnalyzeVersion(ComponentProviderViewModel vm)
         => VersionHelper.IsSourceNewerThanDestination(vm.InstallationVersion, vm.InstalledVersion)
             ? Visibility.Visible
             : Visibility.Collapsed;

@@ -30,6 +30,7 @@ public class KeyValueTemplateItemViewModel : ViewModelBase
     public string Key
     {
         get => key;
+
         set
         {
             key = value;
@@ -40,6 +41,7 @@ public class KeyValueTemplateItemViewModel : ViewModelBase
     public object Value
     {
         get => value;
+
         set
         {
             this.value = value;
@@ -50,6 +52,7 @@ public class KeyValueTemplateItemViewModel : ViewModelBase
     public string? Template
     {
         get => template;
+
         set
         {
             this.template = value;
@@ -61,8 +64,7 @@ public class KeyValueTemplateItemViewModel : ViewModelBase
 
     public string GetValueAsString() => Value.ToString()!;
 
-    public bool ContainsTemplateKey(
-        string templateKey)
+    public bool ContainsTemplateKey(string templateKey)
         => Template is not null &&
            Template.Contains(templateKey, StringComparison.Ordinal);
 

@@ -578,3 +578,6 @@ dotnet_diagnostic.CA2227.severity = none           	# Change 'XXX' to be read-on
 
 dotnet_diagnostic.MA0049.severity = none           	# File should match
 dotnet_diagnostic.MA0134.severity = none            # Observe result of async calls
+dotnet_diagnostic.CA1040.severity = none           	# Avoid empty interfaces (marker interfaces for the component providers)
+dotnet_diagnostic.S3267.severity = none            	# Loops should be simplified with 'LINQ' expressions
+dotnet_diagnostic.SA1504.severity = none            	# All accessors should be single-line or multi-line: conflicts with ATC210 for properties whose setter raises PropertyChanged

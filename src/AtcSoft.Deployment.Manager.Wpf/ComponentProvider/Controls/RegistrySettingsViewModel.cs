@@ -2,7 +2,6 @@ namespace AtcSoft.Deployment.Manager.Wpf.ComponentProvider.Controls;
 
 public class RegistrySettingsViewModel : ViewModelBase
 {
-    private ComponentProviderViewModel? refComponentProvider;
     private bool enableEditingMode;
 
     public RegistrySettingsViewModel()
@@ -11,6 +10,7 @@ public class RegistrySettingsViewModel : ViewModelBase
     public bool EnableEditingMode
     {
         get => enableEditingMode;
+
         set
         {
             if (enableEditingMode == value)
@@ -31,8 +31,6 @@ public class RegistrySettingsViewModel : ViewModelBase
     {
         ArgumentNullException.ThrowIfNull(refComponentProviderViewModel);
         ArgumentNullException.ThrowIfNull(registrySettings);
-
-        refComponentProvider = refComponentProviderViewModel;
 
         Items.Clear();
 

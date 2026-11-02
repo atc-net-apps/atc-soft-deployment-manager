@@ -13,8 +13,7 @@ public class ApplicationOptionsViewModel : ViewModelBase
     {
     }
 
-    public ApplicationOptionsViewModel(
-        ApplicationOptions applicationOptions)
+    public ApplicationOptionsViewModel(ApplicationOptions applicationOptions)
     {
         ArgumentNullException.ThrowIfNull(applicationOptions);
 
@@ -29,6 +28,7 @@ public class ApplicationOptionsViewModel : ViewModelBase
     public string Title
     {
         get => title;
+
         set
         {
             title = value;
@@ -40,6 +40,7 @@ public class ApplicationOptionsViewModel : ViewModelBase
     public string Theme
     {
         get => theme;
+
         set
         {
             theme = value;
@@ -52,6 +53,7 @@ public class ApplicationOptionsViewModel : ViewModelBase
     public BitmapImage? Icon
     {
         get => icon;
+
         set
         {
             icon = value;
@@ -63,6 +65,7 @@ public class ApplicationOptionsViewModel : ViewModelBase
     public bool OpenRecentFileOnStartup
     {
         get => openRecentFileOnStartup;
+
         set
         {
             if (value == openRecentFileOnStartup)
@@ -79,6 +82,7 @@ public class ApplicationOptionsViewModel : ViewModelBase
     public bool EnableEditingMode
     {
         get => enableEditingMode;
+
         set
         {
             if (enableEditingMode == value)
@@ -95,6 +99,7 @@ public class ApplicationOptionsViewModel : ViewModelBase
     public bool ShowOnlyBaseSettings
     {
         get => showOnlyBaseSettings;
+
         set
         {
             if (showOnlyBaseSettings == value)

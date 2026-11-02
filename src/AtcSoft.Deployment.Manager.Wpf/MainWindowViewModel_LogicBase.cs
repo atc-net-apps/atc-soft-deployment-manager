@@ -22,8 +22,7 @@ public partial class MainWindowViewModel
         logger.Log(LogLevel.Trace, $"Loaded RecentOpenFiles: {recentOpenFileViewModels.Count}");
     }
 
-    private void AddLoadedFileToRecentOpenFiles(
-        FileInfo file)
+    private void AddLoadedFileToRecentOpenFiles(FileInfo file)
     {
         RecentOpenFiles.Add(new RecentOpenFileViewModel(WpfApp.InstallerProgramDataProjectsDirectory, DateTime.Now, file.FullName));
 
@@ -94,7 +93,7 @@ public partial class MainWindowViewModel
         }
         catch (Exception ex)
         {
-            logger.Log(LogLevel.Error, $"Configuration file: {file.FullName}, Error: {ex.Message}");
+            logger.Log(LogLevel.Error, ex, $"Configuration file: {file.FullName}, Error: {ex.Message}");
 
             var dialogBox = new InfoDialogBox(
                 Application.Current.MainWindow!,
@@ -182,7 +181,7 @@ public partial class MainWindowViewModel
         }
         catch (Exception ex)
         {
-            logger.Log(LogLevel.Error, $"Configuration file: {InstallationFile!.FullName}, Error: {ex.Message}");
+            logger.Log(LogLevel.Error, ex, $"Configuration file: {InstallationFile!.FullName}, Error: {ex.Message}");
 
             var dialogBox = new InfoDialogBox(
                 Application.Current.MainWindow!,
@@ -233,8 +232,9 @@ public partial class MainWindowViewModel
         return components;
     }
 
-    private static string CalculateMd5(
-        FileInfo file)
+    [SuppressMessage("Security", "CA5351:Do Not Use Broken Cryptographic Algorithms", Justification = "Compared with the Content-MD5 that Azure Blob Storage reports, not used for security.")]
+    [SuppressMessage("Security", "S4790:Use a stronger hashing algorithm", Justification = "Compared with the Content-MD5 that Azure Blob Storage reports, not used for security.")]
+    private static string CalculateMd5(FileInfo file)
     {
         ArgumentNullException.ThrowIfNull(file);
 
