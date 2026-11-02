@@ -1,8 +1,10 @@
-# Atc-installer
+# AtcSoft Deployment Manager
 
-Atc.Installer is a windows application that can be installed with the build artifact [Atc.Installer.msi](#MSI-packages-for-Atc.Installer.msi).
+AtcSoft Deployment Manager is a Windows application that installs, updates, starts and stops the components of a system (applications, Windows services and websites) on an [On-Premises](https://www.techslang.com/definition/what-is-on-premises/) Windows server. A project file describes the components.
 
-The objective with Atc.Installer is to streamline the installation and updating process for Applications, Services, 
+It is the next version of **Atc.Installer** (`atc-net/atc-installer`). Moving from 1.x: see [docs/migration-from-1.x.md](docs/migration-from-1.x.md).
+
+The objective is to streamline the installation and updating process for Applications, Services, 
 and Websites in an [On-Premises](https://www.techslang.com/definition/what-is-on-premises/) Windows environment, 
 ensuring efficient management and maintenance.
 
@@ -17,7 +19,7 @@ The example is from the installation settings: [SampleProject1-InstallationSetti
 ## Concepts
 
 For a system that requires multiple components in installed on a On-Premises Window machine. 
-The Atc.Installer can managed that through an `installation-settings.json` file.
+AtcSoft Deployment Manager manages that through an `InstallationSettings.json` project file.
 
 A realworld senerio could be, that the system you have made is:
 * A frontend website build in `React` with a backend that use `REST` and maybe use `SignalR`.
@@ -60,15 +62,28 @@ Examples on `dependent services` could be:
 |--------------------------------------------|----------------------------------------------|
 | ![Img](docs/images/sampleproject1-gw1.png) | ![Img](docs/images/sampleproject1-psql1.png) |
 
-## MSI packages for Atc.Installer.msi
+## Install
 
-|                              |                              |
-|------------------------------|------------------------------|
-| ![Img](docs/images/msi1.png) | ![Img](docs/images/msi2.png) |
+1. Install the [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0).
+2. Download `AtcSoft.Deployment.Manager.Installer.msi` from the [latest release](https://github.com/atc-net-apps/atc-soft-deployment-manager/releases/latest) and run it.
+
+It installs for all users in `C:\Program Files\AtcSoft\Deployment Manager`, with Start menu and desktop shortcuts. The app runs as administrator, because installing services, websites, firewall rules and certificates needs it.
+
+| Data | Where |
+|---|---|
+| Projects, logs, the app's custom settings | `%ProgramData%\AtcSoft\AtcSoft.Deployment.Manager` (shared by the server's admins; the installer gives all users write access) |
+| Recent files list | `%LocalAppData%\AtcSoft\AtcSoft.Deployment.Manager` (per user) |
+| Downloaded and unpacked installation files | `%TEMP%\AtcSoft.Deployment.Manager`, or `Application:TempPath` in the settings |
+
+The app checks for a newer release at start-up and from **Check for updates**.
+
+## Build and test
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Component Types & Hosting Framework Types
 
-Today the Atc.Installer supports a different kind of "Components" that are defined with a combination of `Component Type` and `Hosting Framework Type`.
+Today AtcSoft Deployment Manager supports a different kind of "Components" that are defined with a combination of `Component Type` and `Hosting Framework Type`.
 
 -> And more can and will come over time.
 
