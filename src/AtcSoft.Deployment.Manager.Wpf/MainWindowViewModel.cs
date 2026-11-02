@@ -374,6 +374,10 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
         {
             if (cancellationTokenSource is null)
             {
+                // No project is open yet. Without this wait the loop kept a CPU core busy.
+                await Task
+                    .Delay(TimeSpan.FromSeconds(1), CancellationToken.None)
+                    .ConfigureAwait(false);
                 continue;
             }
 
