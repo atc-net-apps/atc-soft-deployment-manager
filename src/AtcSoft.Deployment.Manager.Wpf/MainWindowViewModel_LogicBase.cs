@@ -12,7 +12,7 @@ public partial class MainWindowViewModel
     {
         logger.Log(LogLevel.Trace, "Load RecentOpenFiles");
 
-        var recentOpenFileViewModels = RecentOpenFileHelper.Load(WpfApp.InstallerProgramDataDirectory);
+        var recentOpenFileViewModels = RecentOpenFileHelper.Load(WpfApp.DataPaths.UserRoot);
 
         RecentOpenFiles.Clear();
         RecentOpenFiles.SuppressOnChangedNotification = true;
@@ -24,9 +24,9 @@ public partial class MainWindowViewModel
 
     private void AddLoadedFileToRecentOpenFiles(FileInfo file)
     {
-        RecentOpenFiles.Add(new RecentOpenFileViewModel(WpfApp.InstallerProgramDataProjectsDirectory, DateTime.Now, file.FullName));
+        RecentOpenFiles.Add(new RecentOpenFileViewModel(WpfApp.DataPaths.ProjectsDirectory, DateTime.Now, file.FullName));
 
-        RecentOpenFileHelper.Save(WpfApp.InstallerProgramDataDirectory, RecentOpenFiles);
+        RecentOpenFileHelper.Save(WpfApp.DataPaths.UserRoot, RecentOpenFiles);
 
         LoadRecentOpenFiles();
     }

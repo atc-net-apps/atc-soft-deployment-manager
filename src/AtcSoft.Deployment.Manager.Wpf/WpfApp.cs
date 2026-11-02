@@ -1,24 +1,22 @@
 namespace AtcSoft.Deployment.Manager.Wpf;
 
 /// <summary>
-/// App-wide values that the views and view models need. They used to be statics on the App class,
-/// which now lives in the exe project and can't be referenced from here.
+/// App-wide values that the views and view models need.
 /// </summary>
 public static class WpfApp
 {
     [SuppressMessage("Minor Code Smell", "S1075:URIs should not be hardcoded", Justification = "OK.")]
     public static readonly BitmapImage DefaultIcon = new(new Uri("pack://application:,,,/AtcSoft.Deployment.Manager.Wpf;component/Resources/AppIcon.ico", UriKind.Absolute));
 
-    public static DirectoryInfo InstallerTempDirectory { get; set; } = new(Path.Combine(Path.GetTempPath(), "atc-installer"));
+    /// <summary>
+    /// Gets the data folders (see <see cref="AppDataPaths"/>).
+    /// </summary>
+    public static AppDataPaths DataPaths { get; } = AppDataPaths.FromEnvironment();
 
-    public static DirectoryInfo InstallerProgramDataDirectory
-        => new(Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "ATC"), "atc-installer"));
-
-    public static DirectoryInfo InstallerProgramDataLogsDirectory
-        => new(Path.Combine(InstallerProgramDataDirectory.FullName, "Logs"));
-
-    public static DirectoryInfo InstallerProgramDataProjectsDirectory
-        => new(Path.Combine(InstallerProgramDataDirectory.FullName, "Projects"));
+    /// <summary>
+    /// Gets or sets the folder for downloaded, unpacked and backed-up installation files.
+    /// </summary>
+    public static DirectoryInfo TempDirectory { get; set; } = AppDataPaths.DefaultTempDirectory;
 
     public static JsonSerializerOptions JsonSerializerOptions
     {
