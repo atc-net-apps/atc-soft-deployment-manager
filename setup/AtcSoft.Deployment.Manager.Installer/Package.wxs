@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <!-- The UpgradeCode belongs to this app alone and must never change once released:
+       an MSI with the same UpgradeCode removes this one when it is installed.
+       It is not the UpgradeCode of Atc.Installer 1.x on purpose, so 2.x installs next to 1.x
+       and admins can move each server over with the migration guide before removing 1.x. -->
+  <Package
+    Name="AtcSoft Deployment Manager"
+    Manufacturer="AtcSoft"
+    Version="$(ProductVersion)"
+    UpgradeCode="232F62CC-C676-4917-A09B-A8280DC9D493"
+    Scope="perMachine">
+
+    <MajorUpgrade
+      DowngradeErrorMessage="A newer version of [ProductName] is already installed."
+      AllowSameVersionUpgrades="yes" />
+
+    <MediaTemplate EmbedCab="yes" />
+
+    <Feature Id="ProductFeature" Title="AtcSoft Deployment Manager" Level="1">
+      <ComponentGroupRef Id="HarvestedComponents" />
+      <ComponentRef Id="ApplicationShortcut" />
+      <ComponentRef Id="DesktopShortcut" />
+      <ComponentRef Id="DataFolder" />
+    </Feature>
+
+    <Icon Id="DeploymentManagerIcon" SourceFile="$(HarvestDirectory)\AppIcon.ico" />
+    <Property Id="ARPPRODUCTICON" Value="DeploymentManagerIcon" />
+    <Property Id="ARPHELPLINK" Value="https://github.com/atc-net-apps/atc-soft-deployment-manager" />
+
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+    <ui:WixUI Id="WixUI_InstallDir" />
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+
+  </Package>
+</Wix>
