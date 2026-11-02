@@ -57,7 +57,7 @@ public class ApplicationSettingsDialogViewModel : ViewModelBase, IApplicationSet
                 File.Copy(
                     file.FullName,
                     Path.Combine(
-                        WpfApp.InstallerProgramDataDirectory.FullName,
+                        WpfApp.DataPaths.MachineRoot.FullName,
                         Constants.CustomAppSettingsFileName),
                     overwrite: true);
 

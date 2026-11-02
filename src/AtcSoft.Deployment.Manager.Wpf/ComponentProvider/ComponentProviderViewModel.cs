@@ -28,7 +28,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
             windowsFirewallService = new WindowsFirewallService();
             RefComponentProviders = new ObservableCollectionEx<ComponentProviderViewModel>();
             InstallationState = ComponentInstallationState.Checking;
-            InstallerTempDirectory = new DirectoryInfo(Path.Combine(Path.GetTempPath(), "atc-installer"));
+            InstallerTempDirectory = AppDataPaths.DefaultTempDirectory;
             InstallationDirectory = new DirectoryInfo(Path.Combine(InstallerTempDirectory.FullName, "InstallationFiles"));
             ProjectName = "MyProject";
             Name = "MyApp";

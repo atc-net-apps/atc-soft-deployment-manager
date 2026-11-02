@@ -51,7 +51,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
 
         checkForUpdatesBoxDialogViewModel = new CheckForUpdatesBoxDialogViewModel(gitHubReleaseService);
 
-        installationDirectory = new DirectoryInfo(Path.Combine(WpfApp.InstallerTempDirectory.FullName, "InstallationFiles"));
+        installationDirectory = new DirectoryInfo(Path.Combine(WpfApp.TempDirectory.FullName, "InstallationFiles"));
 
         ApplicationOptions = new ApplicationOptionsViewModel(new ApplicationOptions());
 
@@ -68,7 +68,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
                 networkShellService,
                 windowsFirewallService,
                 new ObservableCollectionEx<ComponentProviderViewModel>(),
-                WpfApp.InstallerTempDirectory,
+                WpfApp.TempDirectory,
                 installationDirectory,
                 ProjectName,
                 new ObservableCollectionEx<KeyValueTemplateItemViewModel>(),
@@ -85,7 +85,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
                 networkShellService,
                 windowsFirewallService,
                 ComponentProviders,
-                WpfApp.InstallerTempDirectory,
+                WpfApp.TempDirectory,
                 installationDirectory,
                 ProjectName,
                 new ObservableCollectionEx<KeyValueTemplateItemViewModel>(),
@@ -457,7 +457,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
             networkShellService,
             windowsFirewallService,
             ComponentProviders,
-            WpfApp.InstallerTempDirectory,
+            WpfApp.TempDirectory,
             installationDirectory,
             ProjectName!,
             DefaultApplicationSettings,
@@ -480,7 +480,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
             windowsFirewallService,
             waInstallerService,
             ComponentProviders,
-            WpfApp.InstallerTempDirectory,
+            WpfApp.TempDirectory,
             installationDirectory,
             ProjectName!,
             DefaultApplicationSettings,
@@ -502,7 +502,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
             networkShellService,
             windowsFirewallService,
             ComponentProviders,
-            WpfApp.InstallerTempDirectory,
+            WpfApp.TempDirectory,
             installationDirectory,
             ProjectName!,
             DefaultApplicationSettings,
@@ -525,7 +525,7 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
             windowsFirewallService,
             waInstallerService,
             ComponentProviders,
-            WpfApp.InstallerTempDirectory,
+            WpfApp.TempDirectory,
             installationDirectory,
             ProjectName!,
             DefaultApplicationSettings,

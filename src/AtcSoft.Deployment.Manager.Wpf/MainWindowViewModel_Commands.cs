@@ -71,7 +71,7 @@ public partial class MainWindowViewModel
 
         var openFileDialog = new OpenFileDialog
         {
-            InitialDirectory = WpfApp.InstallerProgramDataProjectsDirectory.FullName,
+            InitialDirectory = WpfApp.DataPaths.ProjectsDirectory.FullName,
             Multiselect = false,
             Title = "Select a Installation-Settings file",
             Filter = "Configuration Files|*InstallationSettings.json",

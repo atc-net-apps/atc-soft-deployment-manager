@@ -1,6 +1,7 @@
 global using System.IO;
 global using System.Reflection;
 global using System.Windows;
+global using System.Windows.Threading;
 
 global using Atc;
 global using Atc.Helpers;
