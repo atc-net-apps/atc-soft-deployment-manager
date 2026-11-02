@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="global.json" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/AtcSoft.Deployment.Manager/AtcSoft.Deployment.Manager.csproj" />
+    <Project Path="src/AtcSoft.Deployment.Manager.Windows/AtcSoft.Deployment.Manager.Windows.csproj" />
+    <Project Path="src/AtcSoft.Deployment.Manager.Wpf/AtcSoft.Deployment.Manager.Wpf.csproj" />
+    <Project Path="src/AtcSoft.Deployment.Manager.Wpf.App/AtcSoft.Deployment.Manager.Wpf.App.csproj" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="test/AtcSoft.Deployment.Manager.Windows.Tests/AtcSoft.Deployment.Manager.Windows.Tests.csproj" />
+  </Folder>
+</Solution>
