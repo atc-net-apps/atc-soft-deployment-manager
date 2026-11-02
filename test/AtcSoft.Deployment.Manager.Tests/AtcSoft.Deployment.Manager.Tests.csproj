@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AtcSoft.Deployment.Manager\AtcSoft.Deployment.Manager.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TestData\**" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\sample-projects\**\*InstallationSettings.json" LinkBase="TestData\SampleProjects" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

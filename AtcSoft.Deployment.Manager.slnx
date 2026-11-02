@@ -12,6 +12,7 @@
     <Project Path="src/AtcSoft.Deployment.Manager.Wpf.App/AtcSoft.Deployment.Manager.Wpf.App.csproj" />
   </Folder>
   <Folder Name="/test/">
+    <Project Path="test/AtcSoft.Deployment.Manager.Tests/AtcSoft.Deployment.Manager.Tests.csproj" />
     <Project Path="test/AtcSoft.Deployment.Manager.Windows.Tests/AtcSoft.Deployment.Manager.Windows.Tests.csproj" />
   </Folder>
 </Solution>

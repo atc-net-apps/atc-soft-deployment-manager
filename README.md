@@ -88,7 +88,7 @@ Today the Atc.Installer supports a different kind of "Components" that are defin
 |----------------------------|--------------------------------------|
 | Native                     |                                      |
 | NativeNoSettings           |                                      |
-| DonNetFramework48          | .NET Framework                       |
+| DotNetFramework48          | .NET Framework                       |
 | DotNet7                    | .NET                                 |
 | DotNet8                    | .NET                                 |
 | NodeJs                     | NodeJs (min. v.18)                   |

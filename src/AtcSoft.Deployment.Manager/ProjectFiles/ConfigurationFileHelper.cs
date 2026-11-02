@@ -1,4 +1,4 @@
-namespace AtcSoft.Deployment.Manager.Wpf.Helpers;
+namespace AtcSoft.Deployment.Manager.ProjectFiles;
 
 public static class ConfigurationFileHelper
 {
@@ -7,8 +7,8 @@ public static class ConfigurationFileHelper
     {
         ArgumentNullException.ThrowIfNull(installationDirectory);
 
-        var customSettingsFile = new FileInfo(Path.Combine(installationDirectory.FullName, Constants.CustomSettingsFileName));
-        var templateSettingsFile = new FileInfo(Path.Combine(installationDirectory.FullName, Constants.TemplateSettingsFileName));
+        var customSettingsFile = new FileInfo(Path.Combine(installationDirectory.FullName, ProjectFileNames.CustomSettings));
+        var templateSettingsFile = new FileInfo(Path.Combine(installationDirectory.FullName, ProjectFileNames.TemplateSettings));
         if (!customSettingsFile.Exists ||
             !templateSettingsFile.Exists)
         {
@@ -25,9 +25,9 @@ public static class ConfigurationFileHelper
 
         var templateSettingsJson = JsonSerializer.Serialize(
             templateSettings,
-            WpfApp.JsonSerializerOptions);
+            ProjectFileJson.SerializerOptions);
 
-        var installationSettingsFile = new FileInfo(Path.Combine(installationDirectory.FullName, Constants.InstallationSettingsFileName));
+        var installationSettingsFile = new FileInfo(Path.Combine(installationDirectory.FullName, ProjectFileNames.InstallationSettings));
         if (installationSettingsFile.Exists)
         {
             var oldInstallationSettings = await FileHelper
@@ -57,7 +57,7 @@ public static class ConfigurationFileHelper
                    await FileHelper
                        .ReadAllTextAsync(installationSettingsFile)
                        .ConfigureAwait(true),
-                   WpfApp.JsonSerializerOptions) ??
+                   ProjectFileJson.SerializerOptions) ??
                throw new IOException($"Invalid format in {installationSettingsFile.FullName}");
     }
 
@@ -71,7 +71,7 @@ public static class ConfigurationFileHelper
         return FileHelper
             .WriteAllTextAsync(
                 installationSettingsFile,
-                JsonSerializer.Serialize(installationOption, WpfApp.JsonSerializerOptions));
+                JsonSerializer.Serialize(installationOption, ProjectFileJson.SerializerOptions));
     }
 
     public static Task SaveInstallationSettings(
