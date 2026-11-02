@@ -24,6 +24,11 @@ public class CheckForUpdatesBoxDialogViewModel : ViewModelBase, ICheckForUpdates
         CurrentVersion = WpfApp.CurrentVersion.ToString(3);
         LatestVersion = CurrentVersion;
 
+        if (UpdateCheck.IsSkipped(Environment.GetEnvironmentVariable(UpdateCheck.SkipVariable)))
+        {
+            return;
+        }
+
         // Check now and then every hour while the app runs.
         Task.Run(
             async () =>
