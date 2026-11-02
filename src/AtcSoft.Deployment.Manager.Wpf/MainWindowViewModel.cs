@@ -352,31 +352,19 @@ public partial class MainWindowViewModel : MainWindowViewModelBase, IMainWindowV
 
     private async Task CheckForUpdates()
     {
-        if (!await NetworkInformationHelper.HasConnectionAsync(CancellationToken.None).ConfigureAwait(true))
+        if (UpdateCheck.IsSkipped(Environment.GetEnvironmentVariable(UpdateCheck.SkipVariable)))
         {
             return;
         }
 
-        var currentVersion = Assembly
-                .GetExecutingAssembly()
-                .GetName()
-                .Version!
-                .ToString();
-
-        var latestVersion = await gitHubReleaseService
-            .GetLatestVersion()
+        var check = await gitHubReleaseService
+            .CheckAsync(CancellationToken.None)
             .ConfigureAwait(false);
 
-        if (latestVersion is null)
+        if (check.Release is not null &&
+            check.Release.IsNewerThan(WpfApp.CurrentVersion))
         {
-            return;
-        }
-
-        if (Version.TryParse(currentVersion, out var cv) &&
-            Version.TryParse(latestVersion.ToString(), out var lv) &&
-            lv.GreaterThan(cv))
-        {
-            NewVersionIsAvailable = "New version of the installer is available";
+            NewVersionIsAvailable = $"Version {check.Release.Version.ToString(3)} is available";
         }
     }
 

@@ -1,9 +1,17 @@
 namespace AtcSoft.Deployment.Manager.Wpf.Dialogs;
 
+/// <summary>
+/// The "Check for updates" dialog: the running version, the latest release on GitHub, and a link to its installer.
+/// </summary>
+/// <remarks>
+/// The installer is opened in the browser from github.com, not downloaded by the app: the app runs elevated,
+/// and the browser shows where the file comes from.
+/// </remarks>
 public class CheckForUpdatesBoxDialogViewModel : ViewModelBase, ICheckForUpdatesBoxDialogViewModel, IDisposable
 {
     private readonly IGitHubReleaseService gitHubReleaseService;
-    private readonly CancellationTokenSource? cancellationTokenSource;
+    private readonly CancellationTokenSource cancellationTokenSource = new();
+    private GitHubRelease? latestRelease;
     private string latestVersion = string.Empty;
     private string latestLink = string.Empty;
     private bool hasNewVersion;
@@ -11,37 +19,29 @@ public class CheckForUpdatesBoxDialogViewModel : ViewModelBase, ICheckForUpdates
     public CheckForUpdatesBoxDialogViewModel(
         IGitHubReleaseService gitHubReleaseService)
     {
-        this.gitHubReleaseService = gitHubReleaseService;
+        this.gitHubReleaseService = gitHubReleaseService ?? throw new ArgumentNullException(nameof(gitHubReleaseService));
 
-        CurrentVersion = Assembly
-            .GetExecutingAssembly()
-            .GetName()
-            .Version!
-        .ToString();
-
+        CurrentVersion = WpfApp.CurrentVersion.ToString(3);
         LatestVersion = CurrentVersion;
 
-        cancellationTokenSource = new CancellationTokenSource();
+        // Check now and then every hour while the app runs.
         Task.Run(
             async () =>
             {
                 while (!cancellationTokenSource.Token.IsCancellationRequested)
                 {
-                    if (await NetworkInformationHelper.HasConnectionAsync(cancellationTokenSource.Token).ConfigureAwait(false))
-                    {
-                        TaskHelper.RunSync(RetrieveLatestFromGitHubHandler);
-                    }
+                    await RetrieveLatestFromGitHub(cancellationTokenSource.Token).ConfigureAwait(false);
 
                     await Task
-                        .Delay(TimeSpan.FromHours(1), CancellationToken.None)
-                        .ConfigureAwait(true);
+                        .Delay(TimeSpan.FromHours(1), cancellationTokenSource.Token)
+                        .ConfigureAwait(false);
                 }
             },
             cancellationTokenSource.Token);
     }
 
-    public IRelayCommandAsync DownloadLatestCommand
-        => new RelayCommandAsync(
+    public IRelayCommand DownloadLatestCommand
+        => new RelayCommand(
             DownloadLatestCommandHandler,
             CanDownloadLatestCommandHandler);
 
@@ -49,12 +49,11 @@ public class CheckForUpdatesBoxDialogViewModel : ViewModelBase, ICheckForUpdates
         => new RelayCommand<NiceDialogBox>(
             CancelCommandHandler);
 
-    public string CurrentVersion { get; set; }
+    public string CurrentVersion { get; }
 
     public string LatestVersion
     {
         get => latestVersion;
-
         set
         {
             latestVersion = value;
@@ -65,80 +64,21 @@ public class CheckForUpdatesBoxDialogViewModel : ViewModelBase, ICheckForUpdates
     public string LatestLink
     {
         get => latestLink;
-
         set
         {
             latestLink = value;
             RaisePropertyChanged();
-
-            HasNewVersion = false;
-            if (Version.TryParse(CurrentVersion, out var cv) &&
-                Version.TryParse(LatestVersion, out var lv))
-            {
-                HasNewVersion = lv.GreaterThan(cv);
-            }
         }
     }
 
     public bool HasNewVersion
     {
         get => hasNewVersion;
-
         set
         {
             hasNewVersion = value;
             RaisePropertyChanged();
         }
-    }
-
-    private async Task RetrieveLatestFromGitHubHandler()
-    {
-        var version = await gitHubReleaseService
-            .GetLatestVersion()
-            .ConfigureAwait(true);
-
-        if (version is not null)
-        {
-            LatestVersion = version.ToString();
-            var link = await gitHubReleaseService
-                .GetLatestMsiLink()
-                .ConfigureAwait(true);
-
-            if (link is not null)
-            {
-                LatestLink = link.AbsoluteUri;
-            }
-        }
-    }
-
-    private bool CanDownloadLatestCommandHandler()
-        => HasNewVersion;
-
-    private async Task DownloadLatestCommandHandler()
-    {
-        var downloadBytes = await gitHubReleaseService
-            .DownloadFileByLink(new Uri(LatestLink))
-            .ConfigureAwait(true);
-
-        if (downloadBytes.Length > 0)
-        {
-            var saveFileDialog = new SaveFileDialog
-            {
-                FileName = "Atc.Installer.msi",
-            };
-
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                await File
-                    .WriteAllBytesAsync(saveFileDialog.FileName, downloadBytes, CancellationToken.None)
-                    .ConfigureAwait(true);
-            }
-        }
-    }
-
-    private static void CancelCommandHandler(NiceDialogBox dialogBox)
-    {
-        dialogBox.Close();
     }
 
     public void Dispose()
@@ -149,6 +89,47 @@ public class CheckForUpdatesBoxDialogViewModel : ViewModelBase, ICheckForUpdates
 
     protected virtual void Dispose(bool disposing)
     {
-        cancellationTokenSource?.Dispose();
+        if (!disposing)
+        {
+            return;
+        }
+
+        cancellationTokenSource.Cancel();
+        cancellationTokenSource.Dispose();
     }
+
+    private async Task RetrieveLatestFromGitHub(
+        CancellationToken cancellationToken)
+    {
+        var check = await gitHubReleaseService
+            .CheckAsync(cancellationToken)
+            .ConfigureAwait(false);
+
+        if (check.Release is null)
+        {
+            return;
+        }
+
+        latestRelease = check.Release;
+        LatestVersion = check.Release.Version.ToString(3);
+        LatestLink = check.Release.DownloadUrl.AbsoluteUri;
+        HasNewVersion = check.Release.IsNewerThan(WpfApp.CurrentVersion);
+    }
+
+    private bool CanDownloadLatestCommandHandler()
+        => HasNewVersion && latestRelease is not null;
+
+    private void DownloadLatestCommandHandler()
+    {
+        if (latestRelease is null)
+        {
+            return;
+        }
+
+        // Only github.com links get here (GitHubRelease.Parse checks them).
+        Process.Start(new ProcessStartInfo(latestRelease.DownloadUrl.AbsoluteUri) { UseShellExecute = true });
+    }
+
+    private static void CancelCommandHandler(NiceDialogBox dialogBox)
+        => dialogBox.Close();
 }

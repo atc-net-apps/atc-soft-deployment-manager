@@ -1,5 +1,4 @@
 global using System.IO;
-global using System.Reflection;
 global using System.Windows;
 global using System.Windows.Threading;
 
@@ -8,6 +7,7 @@ global using Atc.Helpers;
 global using Atc.Wpf.Options;
 global using Atc.Wpf.Theming.Helpers;
 global using Atc.Wpf.Translation;
+global using AtcSoft.Deployment.Manager.Updates;
 global using AtcSoft.Deployment.Manager.Windows;
 global using AtcSoft.Deployment.Manager.Windows.Azure;
 global using AtcSoft.Deployment.Manager.Windows.ElasticSearch;

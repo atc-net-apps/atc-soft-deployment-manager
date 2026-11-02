@@ -46,6 +46,7 @@ global using Atc.XamlToolkit.Helpers;
 global using Atc.XamlToolkit.Messaging;
 global using Atc.XamlToolkit.Mvvm;
 global using AtcSoft.Deployment.Manager.InstallationConfigurations;
+global using AtcSoft.Deployment.Manager.Updates;
 global using AtcSoft.Deployment.Manager.Windows;
 global using AtcSoft.Deployment.Manager.Windows.Azure;
 global using AtcSoft.Deployment.Manager.Windows.ElasticSearch;
