@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="ManufacturerFolder" Name="AtcSoft">
+        <Directory Id="INSTALLFOLDER" Name="Deployment Manager" />
+      </Directory>
+    </StandardDirectory>
+
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="ApplicationProgramsFolder" Name="AtcSoft Deployment Manager" />
+    </StandardDirectory>
+
+    <StandardDirectory Id="DesktopFolder" />
+
+    <!-- The app's machine-wide data folder (AppDataPaths.MachineRoot): projects, logs and custom settings.
+         Created here so every admin on the server can write to it, not only the first one to start the app. -->
+    <StandardDirectory Id="CommonAppDataFolder">
+      <Directory Id="DataManufacturerFolder" Name="AtcSoft">
+        <Directory Id="DATAFOLDER" Name="AtcSoft.Deployment.Manager" />
+      </Directory>
+    </StandardDirectory>
+  </Fragment>
+</Wix>

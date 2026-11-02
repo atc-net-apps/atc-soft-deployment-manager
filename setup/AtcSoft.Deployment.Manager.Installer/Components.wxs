@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <!-- The published files are harvested by HarvestDirectory in the wixproj (HarvestedComponents). -->
+
+    <!-- Start menu shortcut -->
+    <Component Id="ApplicationShortcut" Guid="18E9B8EF-4CC4-438A-93EA-AFCA99475E90" Directory="ApplicationProgramsFolder">
+      <Shortcut Id="ApplicationStartMenuShortcut"
+                Name="AtcSoft Deployment Manager"
+                Description="Install, update and run the components of a project on a server"
+                Target="[INSTALLFOLDER]AtcSoft.Deployment.Manager.Wpf.App.exe"
+                WorkingDirectory="INSTALLFOLDER"
+                Icon="DeploymentManagerIcon" />
+      <RemoveFolder Id="CleanUpShortCut" Directory="ApplicationProgramsFolder" On="uninstall" />
+      <RegistryValue Root="HKCU" Key="Software\AtcSoft\DeploymentManager" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+    <!-- Desktop shortcut -->
+    <Component Id="DesktopShortcut" Guid="DD43BAF4-A056-41AF-8DA1-75D3B300034D" Directory="DesktopFolder">
+      <Shortcut Id="DesktopShortcutLink"
+                Name="AtcSoft Deployment Manager"
+                Description="Install, update and run the components of a project on a server"
+                Target="[INSTALLFOLDER]AtcSoft.Deployment.Manager.Wpf.App.exe"
+                WorkingDirectory="INSTALLFOLDER"
+                Icon="DeploymentManagerIcon" />
+      <RegistryValue Root="HKCU" Key="Software\AtcSoft\DeploymentManager" Name="desktopshortcut" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+
+    <!-- The data folder: SYSTEM and Administrators get full control, Users get modify, inherited by
+         everything below it. The SIDs work in every Windows language. Permanent, so an uninstall or
+         upgrade never deletes the projects and logs. -->
+    <Component Id="DataFolder" Guid="5D4E9F71-732B-4672-9882-D7120BA58609" Directory="DATAFOLDER" Permanent="yes">
+      <CreateFolder>
+        <PermissionEx Sddl="D:(A;OICI;FA;;;SY)(A;OICI;FA;;;BA)(A;OICI;0x1301bf;;;BU)" />
+      </CreateFolder>
+    </Component>
+  </Fragment>
+</Wix>
