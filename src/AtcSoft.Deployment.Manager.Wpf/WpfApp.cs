@@ -11,11 +11,14 @@ public static class WpfApp
 
     public static DirectoryInfo InstallerTempDirectory { get; set; } = new(Path.Combine(Path.GetTempPath(), "atc-installer"));
 
-    public static DirectoryInfo InstallerProgramDataDirectory => new(Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "ATC"), "atc-installer"));
+    public static DirectoryInfo InstallerProgramDataDirectory
+        => new(Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "ATC"), "atc-installer"));
 
-    public static DirectoryInfo InstallerProgramDataLogsDirectory => new(Path.Combine(InstallerProgramDataDirectory.FullName, "Logs"));
+    public static DirectoryInfo InstallerProgramDataLogsDirectory
+        => new(Path.Combine(InstallerProgramDataDirectory.FullName, "Logs"));
 
-    public static DirectoryInfo InstallerProgramDataProjectsDirectory => new(Path.Combine(InstallerProgramDataDirectory.FullName, "Projects"));
+    public static DirectoryInfo InstallerProgramDataProjectsDirectory
+        => new(Path.Combine(InstallerProgramDataDirectory.FullName, "Projects"));
 
     public static JsonSerializerOptions JsonSerializerOptions
     {

@@ -12,9 +12,7 @@ public interface IInstalledAppsInstallerService : IInstallerService
 
     bool IsJavaRuntime8();
 
-    bool IsAppInstalledByDisplayName(
-        string appDisplayName);
+    bool IsAppInstalledByDisplayName(string appDisplayName);
 
-    Version? GetAppInstalledVersionByDisplayName(
-        string appDisplayName);
+    Version? GetAppInstalledVersionByDisplayName(string appDisplayName);
 }

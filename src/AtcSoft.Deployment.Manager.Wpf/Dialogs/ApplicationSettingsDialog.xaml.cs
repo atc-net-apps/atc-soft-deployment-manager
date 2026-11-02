@@ -1,8 +1,5 @@
 namespace AtcSoft.Deployment.Manager.Wpf.Dialogs;
 
-/// <summary>
-/// Interaction logic for ApplicationSettingsDialog.
-/// </summary>
 public partial class ApplicationSettingsDialog
 {
     public ApplicationSettingsDialog(

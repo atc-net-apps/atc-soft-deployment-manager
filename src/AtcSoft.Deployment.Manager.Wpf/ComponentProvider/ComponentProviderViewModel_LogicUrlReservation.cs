@@ -177,9 +177,7 @@ public partial class ComponentProviderViewModel
         {
             AddLogItem(
                 LogLevel.Information,
-                isHttps
-                ? $"Url reservation entry is removed: protocol=https, port={port}"
-                : $"Url reservation entry is removed: protocol=http, port={port}");
+                isHttps ? $"Url reservation entry is removed: protocol=https, port={port}" : $"Url reservation entry is removed: protocol=http, port={port}");
         }
         else
         {
@@ -190,9 +188,7 @@ public partial class ComponentProviderViewModel
 
             AddLogItem(
                 LogLevel.Warning,
-                isHttps
-                ? $"Url reservation entry is not removed: protocol=https, port={port}{Environment.NewLine}{errorMessage}"
-                : $"Url reservation entry is not removed: protocol=http, port={port}{Environment.NewLine}{errorMessage}");
+                isHttps ? $"Url reservation entry is not removed: protocol=https, port={port}{Environment.NewLine}{errorMessage}" : $"Url reservation entry is not removed: protocol=http, port={port}{Environment.NewLine}{errorMessage}");
         }
     }
 }

@@ -64,8 +64,7 @@ public partial class ComponentProviderViewModel
     public virtual Task ServiceDeployAndStartCommandHandler()
         => Task.CompletedTask;
 
-    private bool CanServiceEndpointBrowserLinkCommandHandler(
-        string endpoint)
+    private bool CanServiceEndpointBrowserLinkCommandHandler(string endpoint)
         => RunningState is ComponentRunningState.Running or ComponentRunningState.PartiallyRunning;
 
     private static void ServiceEndpointBrowserLinkCommandHandler(

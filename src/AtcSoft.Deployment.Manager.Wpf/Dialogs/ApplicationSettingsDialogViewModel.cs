@@ -32,8 +32,7 @@ public class ApplicationSettingsDialogViewModel : ViewModelBase, IApplicationSet
         ApplicationOptions.IsDirty = true;
     }
 
-    private void OkCommandHandler(
-        NiceDialogBox dialogBox)
+    private void OkCommandHandler(NiceDialogBox dialogBox)
     {
         ThemeManager.Current.ThemeChanged -= OnThemeChanged;
 
@@ -76,8 +75,7 @@ public class ApplicationSettingsDialogViewModel : ViewModelBase, IApplicationSet
         dialogBox.Close();
     }
 
-    private void CancelCommandHandler(
-        NiceDialogBox dialogBox)
+    private void CancelCommandHandler(NiceDialogBox dialogBox)
     {
         ThemeManager.Current.ThemeChanged -= OnThemeChanged;
 

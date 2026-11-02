@@ -9,8 +9,7 @@ public class AzureOptionsViewModel : ViewModelBase
     {
     }
 
-    public AzureOptionsViewModel(
-        AzureOptions azureOptions)
+    public AzureOptionsViewModel(AzureOptions azureOptions)
     {
         ArgumentNullException.ThrowIfNull(azureOptions);
 
@@ -21,6 +20,7 @@ public class AzureOptionsViewModel : ViewModelBase
     public string StorageConnectionString
     {
         get => storageConnectionString;
+
         set
         {
             storageConnectionString = value;
@@ -31,6 +31,7 @@ public class AzureOptionsViewModel : ViewModelBase
     public string BlobContainerName
     {
         get => blobContainerName;
+
         set
         {
             blobContainerName = value;

@@ -1,12 +1,8 @@
 namespace AtcSoft.Deployment.Manager.Wpf;
 
-/// <summary>
-/// Interaction logic for MainWindow.
-/// </summary>
 public partial class MainWindow
 {
-    public MainWindow(
-        IMainWindowViewModel viewModel)
+    public MainWindow(IMainWindowViewModel viewModel)
     {
         InitializeComponent();
         DataContext = viewModel;

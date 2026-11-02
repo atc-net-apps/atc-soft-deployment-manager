@@ -2,11 +2,9 @@ namespace AtcSoft.Deployment.Manager.Windows;
 
 public interface IWindowsFirewallService
 {
-    bool DoesRuleExist(
-        string ruleName);
+    bool DoesRuleExist(string ruleName);
 
-    bool IsRuleEnabled(
-        string ruleName);
+    bool IsRuleEnabled(string ruleName);
 
     (bool IsSucceeded, string? ErrorMessage) AddInboundRuleForAllowTcp(
         string ruleName,
@@ -38,12 +36,9 @@ public interface IWindowsFirewallService
         string description,
         int port);
 
-    (bool IsSucceeded, string? ErrorMessage) EnableRule(
-        string ruleName);
+    (bool IsSucceeded, string? ErrorMessage) EnableRule(string ruleName);
 
-    (bool IsSucceeded, string? ErrorMessage) DisableRule(
-        string ruleName);
+    (bool IsSucceeded, string? ErrorMessage) DisableRule(string ruleName);
 
-    (bool IsSucceeded, string? ErrorMessage) RemoveRule(
-        string ruleName);
+    (bool IsSucceeded, string? ErrorMessage) RemoveRule(string ruleName);
 }

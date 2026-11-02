@@ -28,6 +28,7 @@ public class EndpointViewModel : ViewModelBase
     public string Name
     {
         get => name;
+
         set
         {
             name = value;
@@ -38,6 +39,7 @@ public class EndpointViewModel : ViewModelBase
     public ComponentEndpointType EndpointType
     {
         get => endpointType;
+
         set
         {
             endpointType = value;
@@ -48,6 +50,7 @@ public class EndpointViewModel : ViewModelBase
     public string Endpoint
     {
         get => endpoint;
+
         set
         {
             endpoint = value;
@@ -58,6 +61,7 @@ public class EndpointViewModel : ViewModelBase
     public string? Template
     {
         get => template;
+
         set
         {
             this.template = value;
@@ -67,8 +71,7 @@ public class EndpointViewModel : ViewModelBase
 
     public ObservableCollectionEx<string>? TemplateLocations { get; }
 
-    public bool ContainsTemplateKey(
-        string templateKey)
+    public bool ContainsTemplateKey(string templateKey)
         => Template is not null &&
            Template.Contains(templateKey, StringComparison.Ordinal);
 

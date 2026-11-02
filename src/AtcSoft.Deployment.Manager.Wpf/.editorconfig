@@ -1,0 +1,2 @@
+[ComponentProvider/{InternetInformationServer,WindowsApplication}/*ComponentProviderViewModel.cs]
+dotnet_diagnostic.S5332.severity = none            # Using http protocol is insecure: these are the http:// browse links for HTTP bindings

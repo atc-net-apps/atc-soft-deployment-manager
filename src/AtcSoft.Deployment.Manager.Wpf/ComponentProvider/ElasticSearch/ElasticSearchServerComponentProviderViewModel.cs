@@ -45,6 +45,7 @@ public partial class ElasticSearchServerComponentProviderViewModel : ComponentPr
     public string? TestConnectionResult
     {
         get => testConnectionResult;
+
         set
         {
             testConnectionResult = value;
@@ -173,7 +174,8 @@ public partial class ElasticSearchServerComponentProviderViewModel : ComponentPr
         IsBusy = false;
     }
 
-    private void InitializeFromApplicationOptions(ApplicationOption applicationOption)
+    private void InitializeFromApplicationOptions(
+        ApplicationOption applicationOption)
     {
         InstalledMainFilePath = new ValueTemplateItemViewModel(esInstallerService.GetInstalledMainFile()?.FullName!, template: null, templateLocations: null);
         ServiceName = esInstallerService.GetServiceName();

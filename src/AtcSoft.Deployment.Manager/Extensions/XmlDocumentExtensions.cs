@@ -3,8 +3,7 @@ namespace System.Xml;
 
 public static class XmlDocumentExtensions
 {
-    public static string ToIndentedXml(
-        this XmlDocument xmlDocument)
+    public static string ToIndentedXml(this XmlDocument xmlDocument)
     {
         ArgumentNullException.ThrowIfNull(xmlDocument);
 

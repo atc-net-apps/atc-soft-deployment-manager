@@ -109,8 +109,7 @@ public partial class MainWindowViewModel
         => RecentOpenFiles is not null &&
            RecentOpenFiles.Count != 0;
 
-    private Task OpenRecentConfigurationFileCommandHandler(
-        string filePath)
+    private Task OpenRecentConfigurationFileCommandHandler(string filePath)
         => LoadConfigurationFile(
             new FileInfo(filePath),
             CancellationToken.None);
@@ -268,6 +267,7 @@ public partial class MainWindowViewModel
                                          x.FirewallRules.IsDirty ||
                                          x.ConfigurationSettingsFiles.IsDirty));
 
+    [SuppressMessage("AsyncUsage", "AsyncFixer02:Long-running or blocking operations inside an async method", Justification = "The tasks are awaited with WhenAll below.")]
     private async Task ReportingToExcelCommandHandler()
     {
         lastUserActionTimestamp = DateTime.Now;

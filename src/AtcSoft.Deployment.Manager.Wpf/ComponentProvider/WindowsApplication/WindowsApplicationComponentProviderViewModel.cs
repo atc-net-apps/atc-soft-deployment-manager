@@ -367,8 +367,7 @@ public class WindowsApplicationComponentProviderViewModel : ComponentProviderVie
         }
     }
 
-    public override string ResolvedVirtualRootFolder(
-        string folder)
+    public override string ResolvedVirtualRootFolder(string folder)
     {
         ArgumentException.ThrowIfNullOrEmpty(folder);
 
@@ -642,8 +641,7 @@ public class WindowsApplicationComponentProviderViewModel : ComponentProviderVie
                 message));
     }
 
-    private async Task ServiceDeployAndStart(
-        bool useAutoStart)
+    private async Task ServiceDeployAndStart(bool useAutoStart)
     {
         Messenger.Default.Send(new UpdateUserActionTimestampMessage());
 
@@ -706,8 +704,7 @@ public class WindowsApplicationComponentProviderViewModel : ComponentProviderVie
         IsBusy = false;
     }
 
-    private async Task<bool> ServiceDeployWindowServiceCreate(
-        bool useAutoStart)
+    private async Task<bool> ServiceDeployWindowServiceCreate(bool useAutoStart)
     {
         var isDone = false;
 
@@ -726,8 +723,7 @@ public class WindowsApplicationComponentProviderViewModel : ComponentProviderVie
         return isDone;
     }
 
-    private async Task<bool> ServiceDeployWindowServiceUpdate(
-        bool useAutoStart)
+    private async Task<bool> ServiceDeployWindowServiceUpdate(bool useAutoStart)
     {
         var isDone = false;
 
@@ -877,8 +873,7 @@ public class WindowsApplicationComponentProviderViewModel : ComponentProviderVie
         }
     }
 
-    private Task<bool> ServiceDeployWindowApplicationCreate(
-        bool useAutoStart)
+    private Task<bool> ServiceDeployWindowApplicationCreate(bool useAutoStart)
     {
         var isDone = false;
 
@@ -914,8 +909,7 @@ public class WindowsApplicationComponentProviderViewModel : ComponentProviderVie
         return Task.FromResult(isDone);
     }
 
-    private bool ServiceDeployWindowApplicationUpdate(
-        bool useAutoStart)
+    private bool ServiceDeployWindowApplicationUpdate(bool useAutoStart)
     {
         var isDone = false;
 

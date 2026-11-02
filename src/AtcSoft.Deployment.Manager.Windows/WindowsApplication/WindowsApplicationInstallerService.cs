@@ -29,8 +29,7 @@ public sealed class WindowsApplicationInstallerService : IWindowsApplicationInst
     public bool IsComponentInstalledMicrosoftNetDesktop8()
         => iaInstallerService.IsAppInstalledByDisplayName("Microsoft Windows Desktop Runtime - 8.");
 
-    public ComponentRunningState GetServiceState(
-        string serviceName)
+    public ComponentRunningState GetServiceState(string serviceName)
     {
         try
         {
@@ -125,8 +124,7 @@ public sealed class WindowsApplicationInstallerService : IWindowsApplicationInst
         }
     }
 
-    public ComponentRunningState GetApplicationState(
-        string applicationName)
+    public ComponentRunningState GetApplicationState(string applicationName)
     {
         ArgumentException.ThrowIfNullOrEmpty(applicationName);
 
@@ -148,8 +146,7 @@ public sealed class WindowsApplicationInstallerService : IWindowsApplicationInst
         }
     }
 
-    public ComponentRunningState GetApplicationState(
-        FileInfo applicationFile)
+    public ComponentRunningState GetApplicationState(FileInfo applicationFile)
     {
         ArgumentNullException.ThrowIfNull(applicationFile);
 

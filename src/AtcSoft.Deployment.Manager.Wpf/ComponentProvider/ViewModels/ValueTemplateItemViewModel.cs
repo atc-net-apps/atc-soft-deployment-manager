@@ -27,6 +27,7 @@ public class ValueTemplateItemViewModel : ViewModelBase
     public object? Value
     {
         get => value;
+
         set
         {
             this.value = value;
@@ -37,6 +38,7 @@ public class ValueTemplateItemViewModel : ViewModelBase
     public string? Template
     {
         get => template;
+
         set
         {
             this.template = value;

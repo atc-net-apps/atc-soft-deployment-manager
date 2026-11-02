@@ -132,8 +132,7 @@ public class AzureStorageAccountInstallerService : IAzureStorageAccountInstaller
         return blobNamesWithHash;
     }
 
-    public static string ConvertBase64ToHex(
-        string base64)
+    public static string ConvertBase64ToHex(string base64)
     {
         var bytes = Convert.FromBase64String(base64);
         return Convert.ToHexString(bytes);

@@ -171,8 +171,7 @@ public sealed class InternetInformationServerInstallerService : IInternetInforma
         return moduleElement != null;
     }
 
-    public string? ResolvedVirtualRootFolder(
-        string? folder)
+    public string? ResolvedVirtualRootFolder(string? folder)
         => folder is not null &&
            folder.StartsWith(@".\", StringComparison.Ordinal) &&
            IsInstalled &&
@@ -253,8 +252,7 @@ public sealed class InternetInformationServerInstallerService : IInternetInforma
         }
     }
 
-    public ComponentRunningState GetWebsiteState(
-        string websiteName)
+    public ComponentRunningState GetWebsiteState(string websiteName)
     {
         ArgumentException.ThrowIfNullOrEmpty(websiteName);
 
@@ -675,8 +673,7 @@ public sealed class InternetInformationServerInstallerService : IInternetInforma
     public IList<X509Certificate2> GetX509Certificates()
         => CryptographyHelper.GetX509Certificates();
 
-    public X509Certificate2? GetWebsiteX509Certificate(
-        string websiteName)
+    public X509Certificate2? GetWebsiteX509Certificate(string websiteName)
     {
         ArgumentException.ThrowIfNullOrEmpty(websiteName);
 
@@ -748,8 +745,7 @@ public sealed class InternetInformationServerInstallerService : IInternetInforma
         }
     }
 
-    public bool UnAssignX509CertificateOnWebsite(
-        string websiteName)
+    public bool UnAssignX509CertificateOnWebsite(string websiteName)
     {
         ArgumentException.ThrowIfNullOrEmpty(websiteName);
 
@@ -787,8 +783,7 @@ public sealed class InternetInformationServerInstallerService : IInternetInforma
     private string? GetResourceDefaultNodeJsUrlWebConfig()
         => GetResourceTextFile("default-nodejs-urlrewrite-webconfig");
 
-    private string? GetResourceTextFile(
-        string resourceName)
+    private string? GetResourceTextFile(string resourceName)
     {
         using var stream = this.GetType()
             .Assembly

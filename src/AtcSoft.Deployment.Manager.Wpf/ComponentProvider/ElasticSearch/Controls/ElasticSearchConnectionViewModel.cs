@@ -12,6 +12,7 @@ public class ElasticSearchConnectionViewModel : ViewModelBase
     public string? HostName
     {
         get => hostName;
+
         set
         {
             hostName = value;
@@ -22,6 +23,7 @@ public class ElasticSearchConnectionViewModel : ViewModelBase
     public string? WebProtocol
     {
         get => webProtocol;
+
         set
         {
             webProtocol = value;
@@ -32,6 +34,7 @@ public class ElasticSearchConnectionViewModel : ViewModelBase
     public ushort? HostPort
     {
         get => hostPort;
+
         set
         {
             hostPort = value;
@@ -42,6 +45,7 @@ public class ElasticSearchConnectionViewModel : ViewModelBase
     public string? Username
     {
         get => username;
+
         set
         {
             username = value;
@@ -52,6 +56,7 @@ public class ElasticSearchConnectionViewModel : ViewModelBase
     public string? Password
     {
         get => password;
+
         set
         {
             password = value;
@@ -62,6 +67,7 @@ public class ElasticSearchConnectionViewModel : ViewModelBase
     public string? Index
     {
         get => index;
+
         set
         {
             index = value;

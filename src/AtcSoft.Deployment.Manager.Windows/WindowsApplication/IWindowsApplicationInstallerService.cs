@@ -12,8 +12,7 @@ public interface IWindowsApplicationInstallerService : IInstallerService
 
     bool IsComponentInstalledMicrosoftNetDesktop8();
 
-    ComponentRunningState GetServiceState(
-        string serviceName);
+    ComponentRunningState GetServiceState(string serviceName);
 
     Task<bool> StopService(
         string serviceName,
@@ -23,8 +22,7 @@ public interface IWindowsApplicationInstallerService : IInstallerService
         string serviceName,
         ushort timeoutInSeconds = 60);
 
-    ComponentRunningState GetApplicationState(
-        string applicationName);
+    ComponentRunningState GetApplicationState(string applicationName);
 
     bool StopApplication(
         string applicationName,

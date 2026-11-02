@@ -5,8 +5,7 @@ public class DependentServiceViewModel : ViewModelBase
     private ComponentInstallationState installationState;
     private ComponentRunningState runningState;
 
-    public DependentServiceViewModel(
-        string name)
+    public DependentServiceViewModel(string name)
     {
         Name = name ?? throw new ArgumentNullException(nameof(name));
     }
@@ -16,6 +15,7 @@ public class DependentServiceViewModel : ViewModelBase
     public ComponentInstallationState InstallationState
     {
         get => installationState;
+
         set
         {
             installationState = value;
@@ -26,6 +26,7 @@ public class DependentServiceViewModel : ViewModelBase
     public ComponentRunningState RunningState
     {
         get => runningState;
+
         set
         {
             runningState = value;

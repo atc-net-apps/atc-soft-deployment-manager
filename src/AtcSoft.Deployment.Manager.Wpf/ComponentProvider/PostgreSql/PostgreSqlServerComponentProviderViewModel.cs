@@ -76,6 +76,7 @@ public partial class PostgreSqlServerComponentProviderViewModel : ComponentProvi
     public string? TestConnectionResult
     {
         get => testConnectionResult;
+
         set
         {
             testConnectionResult = value;
@@ -83,7 +84,8 @@ public partial class PostgreSqlServerComponentProviderViewModel : ComponentProvi
         }
     }
 
-    public override string Description => $"Database / {ComponentType.GetDescription()}";
+    public override string Description
+        => $"Database / {ComponentType.GetDescription()}";
 
     public override void CheckServiceState()
     {

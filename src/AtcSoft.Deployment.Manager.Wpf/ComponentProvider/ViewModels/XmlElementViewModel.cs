@@ -26,6 +26,7 @@ public class XmlElementViewModel : ViewModelBase
     public string Path
     {
         get => path;
+
         set
         {
             path = value;
@@ -36,6 +37,7 @@ public class XmlElementViewModel : ViewModelBase
     public string Element
     {
         get => element;
+
         set
         {
             element = value;
@@ -46,8 +48,7 @@ public class XmlElementViewModel : ViewModelBase
     [SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "OK.")]
     public ObservableCollectionEx<KeyValueTemplateItemViewModel> Attributes { get; set; } = new();
 
-    private void Populate(
-        XmlElementSettingsOptions xmlElementSettingsOptions)
+    private void Populate(XmlElementSettingsOptions xmlElementSettingsOptions)
     {
         ArgumentNullException.ThrowIfNull(xmlElementSettingsOptions);
 

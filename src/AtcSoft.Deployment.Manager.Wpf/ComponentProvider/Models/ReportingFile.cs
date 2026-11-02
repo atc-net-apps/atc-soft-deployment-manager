@@ -3,8 +3,7 @@ namespace AtcSoft.Deployment.Manager.Wpf.ComponentProvider.Models;
 
 public class ReportingFile
 {
-    public ReportingFile(
-        FileInfo fileInfo)
+    public ReportingFile(FileInfo fileInfo)
     {
         ArgumentNullException.ThrowIfNull(fileInfo);
 

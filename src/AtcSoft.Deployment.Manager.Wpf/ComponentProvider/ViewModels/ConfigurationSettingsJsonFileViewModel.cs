@@ -25,6 +25,7 @@ public class ConfigurationSettingsJsonFileViewModel : ViewModelBase
     public string FileName
     {
         get => fileName;
+
         set
         {
             fileName = value;

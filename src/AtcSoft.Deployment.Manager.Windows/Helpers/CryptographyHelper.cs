@@ -137,7 +137,7 @@ public static class CryptographyHelper
             password);
 
         // Convert the exported bytes back to an X509Certificate2 object
-        return new X509Certificate2(
+        return X509CertificateLoader.LoadPkcs12(
             pfxBytes,
             password,
             x509KeyStorageFlags);

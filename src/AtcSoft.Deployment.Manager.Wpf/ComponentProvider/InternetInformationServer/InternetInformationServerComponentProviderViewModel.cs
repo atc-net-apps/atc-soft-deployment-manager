@@ -53,6 +53,7 @@ public class InternetInformationServerComponentProviderViewModel : ComponentProv
     public X509Certificate2? X509Certificate
     {
         get => x509Certificate;
+
         private set
         {
             x509Certificate = value;
@@ -63,6 +64,7 @@ public class InternetInformationServerComponentProviderViewModel : ComponentProv
     public bool EnableEditingMode
     {
         get => enableEditingMode;
+
         set
         {
             if (enableEditingMode == value)
@@ -268,8 +270,7 @@ public class InternetInformationServerComponentProviderViewModel : ComponentProv
         }
     }
 
-    public override string ResolvedVirtualRootFolder(
-        string folder)
+    public override string ResolvedVirtualRootFolder(string folder)
     {
         ArgumentException.ThrowIfNullOrEmpty(folder);
 
@@ -551,26 +552,13 @@ public class InternetInformationServerComponentProviderViewModel : ComponentProv
                     }
                     else
                     {
-                        if (useTemplateHostName)
-                        {
-                            Endpoints.Add(
-                                new EndpointViewModel(
-                                    "Http",
-                                    ComponentEndpointType.BrowserLink,
-                                    $"http://{HostName}:{HttpPort}",
-                                    "http://[[HostName]]:[[HttpPort]]",
-                                    new List<string> { "DefaultApplicationSettings", "ApplicationSettings" }));
-                        }
-                        else
-                        {
-                            Endpoints.Add(
-                                new EndpointViewModel(
-                                    "Http",
-                                    ComponentEndpointType.BrowserLink,
-                                    $"http://{HostName}:{HttpPort}",
-                                    $"http://{HostName}:[[HttpPort]]",
-                                    new List<string> { "ApplicationSettings" }));
-                        }
+                        Endpoints.Add(
+                            new EndpointViewModel(
+                                "Http",
+                                ComponentEndpointType.BrowserLink,
+                                $"http://{HostName}:{HttpPort}",
+                                $"http://{HostName}:[[HttpPort]]",
+                                new List<string> { "ApplicationSettings" }));
                     }
                 }
             }
@@ -701,8 +689,7 @@ public class InternetInformationServerComponentProviderViewModel : ComponentProv
         }
     }
 
-    private async Task ServiceDeployAndStart(
-        bool useAutoStart)
+    private async Task ServiceDeployAndStart(bool useAutoStart)
     {
         Messenger.Default.Send(new UpdateUserActionTimestampMessage());
 
@@ -898,8 +885,7 @@ public class InternetInformationServerComponentProviderViewModel : ComponentProv
                 message));
     }
 
-    private async Task<bool> ServiceDeployWebsiteCreate(
-        bool useAutoStart)
+    private async Task<bool> ServiceDeployWebsiteCreate(bool useAutoStart)
     {
         var isDone = false;
 
@@ -948,8 +934,7 @@ public class InternetInformationServerComponentProviderViewModel : ComponentProv
         return isDone;
     }
 
-    private async Task<bool> ServiceDeployWebsiteUpdate(
-        bool useAutoStart)
+    private async Task<bool> ServiceDeployWebsiteUpdate(bool useAutoStart)
     {
         var isDone = false;
 
@@ -974,8 +959,7 @@ public class InternetInformationServerComponentProviderViewModel : ComponentProv
         return isDone;
     }
 
-    private async Task ServiceDeployWebsitePostProcessing(
-        bool useAutoStart)
+    private async Task ServiceDeployWebsitePostProcessing(bool useAutoStart)
     {
         BackupConfigurationFilesAndLog();
 

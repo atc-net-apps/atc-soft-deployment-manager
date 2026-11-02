@@ -9,8 +9,7 @@ public class RegistrySettingViewModel : ViewModelBase
     {
     }
 
-    public RegistrySettingViewModel(
-        RegistrySettingOption registrySetting)
+    public RegistrySettingViewModel(RegistrySettingOption registrySetting)
     {
         ArgumentNullException.ThrowIfNull(registrySetting);
 
@@ -21,6 +20,7 @@ public class RegistrySettingViewModel : ViewModelBase
     public string Key
     {
         get => key;
+
         set
         {
             key = value;
@@ -31,6 +31,7 @@ public class RegistrySettingViewModel : ViewModelBase
     public InsertRemoveType Action
     {
         get => action;
+
         set
         {
             action = value;

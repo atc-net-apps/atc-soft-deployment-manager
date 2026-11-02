@@ -121,6 +121,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
     public bool CompactMode
     {
         get => compactMode;
+
         set
         {
             compactMode = value;
@@ -141,6 +142,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
     public bool ShowOnlyBaseSettings
     {
         get => showOnlyBaseSettings;
+
         set
         {
             if (showOnlyBaseSettings == value)
@@ -168,6 +170,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
     public string FilterTextForMenu
     {
         get => filterTextForMenu;
+
         set
         {
             filterTextForMenu = value;
@@ -188,6 +191,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
     public bool HideMenuItem
     {
         get => hideMenuItem;
+
         set
         {
             hideMenuItem = value;
@@ -197,7 +201,8 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
 
     public string Name { get; }
 
-    public virtual string Description => $"{ComponentType.GetDescription()} / {HostingFramework.GetDescription()}";
+    public virtual string Description
+        => $"{ComponentType.GetDescription()} / {HostingFramework.GetDescription()}";
 
     public string? ServiceName { get; set; }
 
@@ -210,6 +215,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
     public string? RawInstallationPath
     {
         get => rawInstallationPath;
+
         protected set
         {
             rawInstallationPath = value;
@@ -220,6 +226,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
     public string? InstallationFile
     {
         get => installationFile;
+
         protected set
         {
             installationFile = value;
@@ -230,6 +237,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
     public string? UnpackedZipFolderPath
     {
         get => unpackedZipFolderPath;
+
         protected set
         {
             unpackedZipFolderPath = value;
@@ -240,6 +248,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
     public ValueTemplateItemViewModel? InstallationFolderPath
     {
         get => installationFolderPath;
+
         protected set
         {
             installationFolderPath = value;
@@ -250,6 +259,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
     public ValueTemplateItemViewModel? InstalledMainFilePath
     {
         get => installedMainFilePath;
+
         protected set
         {
             installedMainFilePath = value;
@@ -260,6 +270,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
     public string? InstalledVersion
     {
         get => installedVersion;
+
         protected set
         {
             installedVersion = value;
@@ -270,6 +281,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
     public string? InstallationVersion
     {
         get => installationVersion;
+
         protected set
         {
             installationVersion = value;
@@ -284,6 +296,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
     public ComponentInstallationState InstallationState
     {
         get => installationState;
+
         set
         {
             if (installationState == value)
@@ -305,6 +318,7 @@ public partial class ComponentProviderViewModel : ViewModelBase, IComponentProvi
     public ComponentRunningState RunningState
     {
         get => runningState;
+
         set
         {
             if (runningState == value)

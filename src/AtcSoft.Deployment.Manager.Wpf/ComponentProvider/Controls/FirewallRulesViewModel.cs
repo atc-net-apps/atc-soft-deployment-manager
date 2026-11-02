@@ -25,6 +25,7 @@ public class FirewallRulesViewModel : ViewModelBase
     public bool EnableEditingMode
     {
         get => enableEditingMode;
+
         set
         {
             if (enableEditingMode == value)
@@ -113,8 +114,7 @@ public class FirewallRulesViewModel : ViewModelBase
         IsDirty = true;
     }
 
-    private void EditCommandHandler(
-        FirewallRuleViewModel item)
+    private void EditCommandHandler(FirewallRuleViewModel item)
     {
         var updateItem = Items.First(x => x.Name.Equals(item.Name, StringComparison.Ordinal));
 
@@ -133,8 +133,7 @@ public class FirewallRulesViewModel : ViewModelBase
         HandleEditDialogResult(dialogBox, updateItem);
     }
 
-    private void DeleteCommandHandler(
-        FirewallRuleViewModel item)
+    private void DeleteCommandHandler(FirewallRuleViewModel item)
     {
         var dialogBox = new QuestionDialogBox(
             Application.Current.MainWindow!,
