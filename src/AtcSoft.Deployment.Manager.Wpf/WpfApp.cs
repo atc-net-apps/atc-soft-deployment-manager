@@ -9,6 +9,12 @@ public static class WpfApp
     public static readonly BitmapImage DefaultIcon = new(new Uri("pack://application:,,,/AtcSoft.Deployment.Manager.Wpf;component/Resources/AppIcon.ico", UriKind.Absolute));
 
     /// <summary>
+    /// Gets the running version, which release-please sets in Directory.Build.props.
+    /// </summary>
+    public static Version CurrentVersion
+        => (Assembly.GetEntryAssembly() ?? typeof(WpfApp).Assembly).GetName().Version ?? new Version(0, 0, 0);
+
+    /// <summary>
     /// Gets the data folders (see <see cref="AppDataPaths"/>).
     /// </summary>
     public static AppDataPaths DataPaths { get; } = AppDataPaths.FromEnvironment();
