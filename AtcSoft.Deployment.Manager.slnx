@@ -14,5 +14,6 @@
   <Folder Name="/test/">
     <Project Path="test/AtcSoft.Deployment.Manager.Tests/AtcSoft.Deployment.Manager.Tests.csproj" />
     <Project Path="test/AtcSoft.Deployment.Manager.Windows.Tests/AtcSoft.Deployment.Manager.Windows.Tests.csproj" />
+    <Project Path="test/AtcSoft.Deployment.Manager.Wpf.Tests/AtcSoft.Deployment.Manager.Wpf.Tests.csproj" />
   </Folder>
 </Solution>
